@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">FlatIt</string>
+    <string name="app_name" translatable="false">FlatIt</string>
+    <string name="overview">Overview</string>
+    <string name="shopping">Shopping</string>
+    <string name="billing">Billing</string>
+    <string name="todos">Todos</string>
 </resources>
