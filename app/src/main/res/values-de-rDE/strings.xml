@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="overview">Übersicht</string>
+    <string name="billing">Abrechnung</string>
+    <string name="shopping">Einkaufen</string>
+    <string name="todos">Todos</string>
+</resources>
