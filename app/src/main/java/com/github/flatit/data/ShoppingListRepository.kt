@@ -1,5 +1,6 @@
 package com.github.flatit.data
 
+import androidx.lifecycle.LiveData
 import com.github.flatit.data.model.ShoppingListItem
 
 interface ShoppingListRepository {
