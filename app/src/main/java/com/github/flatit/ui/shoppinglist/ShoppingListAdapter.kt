@@ -73,6 +73,7 @@ class ShoppingListAdapter(
             oldItem: ShoppingListItem,
             newItem: ShoppingListItem
         ): Boolean {
+
             return oldItem.id == newItem.id
         }
 

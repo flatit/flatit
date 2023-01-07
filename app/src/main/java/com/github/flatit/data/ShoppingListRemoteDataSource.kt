@@ -17,7 +17,7 @@ interface ShoppingListRemoteDataSource {
 
 class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
 
-    private val TAG = "FirebaseDataSource";
+    private val TAG = "ShoppingListFirebaseDataSource";
     private val COLLECTION_NAME = "shoppinglist";
 
     private val db = Firebase.firestore
