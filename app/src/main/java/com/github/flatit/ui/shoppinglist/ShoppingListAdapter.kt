@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.databinding.ItemShoppingListBinding
 
-class ShoppingListAdapter() : ListAdapter<ShoppingListItem, ShoppingListAdapter.ShoppingListViewHolder>(Diff) {
+class ShoppingListAdapter(
+    private val onItemChecked: (item: ShoppingListItem) -> Unit,
+    private val onPositveButtonClicked: (item: ShoppingListItem) -> Unit,
+    private val onNegativeButtonClicked: (item: ShoppingListItem) -> Unit,
+) : ListAdapter<ShoppingListItem, ShoppingListAdapter.ShoppingListViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -20,11 +24,39 @@ class ShoppingListAdapter() : ListAdapter<ShoppingListItem, ShoppingListAdapter.
         val item = getItem(position)
 
         with(holder.binding) {
+            checkBoxTitle.setOnCheckedChangeListener { _, isChecked ->
+                                onItemChecked(ShoppingListItem(
+                                        id = item.id,
+                                        text = item.text,
+                                        checked = isChecked,
+                                        amount = item.amount
+                                            ))
+                            }
+            buttonAddingAmount.setOnClickListener {
+                onPositveButtonClicked(ShoppingListItem(
+                    id = item.id,
+                    text = item.text,
+                    checked = item.checked,
+                    amount = item.amount + 1
+                )
+                )
+            }
+
+            buttonRemovingAmount.setOnClickListener {
+                if (item.amount > 1){
+                    onNegativeButtonClicked(ShoppingListItem(
+                        id = item.id,
+                        text = item.text,
+                        checked = item.checked,
+                        amount = item.amount-1
+                    )
+                    )
+                }
+            }
 
             checkBoxTitle.text = item.text
             checkBoxTitle.isChecked = item.checked
             textviewAmount.text = item.amount.toString()
-
         }
     }
 
