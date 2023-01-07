@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.flatit.R
 import com.github.flatit.databinding.FragmentShoppingListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ShoppingListFragment : Fragment() {
 
@@ -28,6 +30,14 @@ class ShoppingListFragment : Fragment() {
 
         shoppingListViewModel.items.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+
+        var fab = root.findViewById<FloatingActionButton>(R.id.floating_action_button)
+        if (fab != null) {
+            fab.setOnClickListener {
+                val dialog = custom_dialog_fragment()
+                dialog.show(parentFragmentManager, "dialog")
+            }
         }
 
         return root

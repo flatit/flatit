@@ -2,14 +2,16 @@ package com.github.flatit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.DialogFragment
 import com.github.flatit.ui.billing.BillingFragment
 import com.github.flatit.ui.overview.OverviewFragment
 import com.github.flatit.ui.shoppinglist.ShoppingListFragment
+import com.github.flatit.ui.shoppinglist.custom_dialog_fragment
 import com.github.flatit.ui.todos.TodosFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), custom_dialog_fragment.NoticeDialogListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -40,5 +42,9 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun on_dialgo_positive_click(dialog: DialogFragment, title_field: String) {
+
     }
 }
