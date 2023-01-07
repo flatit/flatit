@@ -8,8 +8,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 interface ShoppingListRemoteDataSource {
-    fun getShoppingListItems() : LiveData<List<ShoppingListItem>>
-    fun addShoppingListItems(item: ShoppingListItem)
+    fun getItems() : LiveData<List<ShoppingListItem>>
+    fun addItem(item: ShoppingListItem)
+    fun updateItem(item: ShoppingListItem)
+    fun deleteItem(item: ShoppingListItem)
 }
 
 class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
@@ -19,26 +21,39 @@ class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
 
     private val db = Firebase.firestore
 
-    override fun getShoppingListItems(): LiveData<List<ShoppingListItem>> {
+    override fun getItems(): LiveData<List<ShoppingListItem>> {
         val items = MutableLiveData<List<ShoppingListItem>>()
 
         db.collection(COLLECTION_NAME).addSnapshotListener { snapshot, _ ->
-            items.value = snapshot?.mapNotNull { i ->
-                ShoppingListItem(text = i.getString("text").orEmpty(), checked = i.getBoolean("checked") ?: false, amount = i.getLong("amount") ?: 1)
+            items.value = snapshot?.mapNotNull { item ->
+                ShoppingListItem(
+                    id = item.id,
+                    text = item.getString("text").orEmpty(),
+                    checked = item.getBoolean("checked") ?: false,
+                    amount = item.getLong("amount") ?: 1)
             }.orEmpty()
         }
 
         return items
     }
 
-    override fun addShoppingListItems(item: ShoppingListItem) {
-        db.collection(COLLECTION_NAME)
-            .add(item)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+    override fun addItem(item: ShoppingListItem) {
+        db.collection(COLLECTION_NAME).document(item.id)
+            .set(item)
+            .addOnSuccessListener { _ ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${item.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
     }
+
+    override fun updateItem(item: ShoppingListItem) {
+        db.collection(COLLECTION_NAME).document(item.id).set(item)
+    }
+
+    override fun deleteItem(item: ShoppingListItem) {
+        db.collection(COLLECTION_NAME).document(item.id).delete()
+    }
+
 }
