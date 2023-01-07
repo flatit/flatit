@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import com.github.flatit.data.model.ShoppingListItem
 
 interface ShoppingListRepository {
-    suspend fun getShoppingListItems() : List<ShoppingListItem>
+    fun getShoppingListItems() : LiveData<List<ShoppingListItem>>
 }
 
 class ShoppingListRepositoryImpl(
     private val dataSource: ShoppingListRemoteDataSource
 ) : ShoppingListRepository {
 
-    override suspend fun getShoppingListItems(): List<ShoppingListItem> {
+    override fun getShoppingListItems(): LiveData<List<ShoppingListItem>> {
         return dataSource.getShoppingListItems()
     }
 }
