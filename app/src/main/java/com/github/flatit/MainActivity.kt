@@ -2,15 +2,11 @@ package com.github.flatit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.DialogFragment
 import com.github.flatit.ui.billing.BillingFragment
 import com.github.flatit.ui.overview.OverviewFragment
 import com.github.flatit.ui.shoppinglist.ShoppingListFragment
-import com.github.flatit.ui.shoppinglist.custom_dialog_fragment
 import com.github.flatit.ui.todos.TodosFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
-import com.github.flatit.data.ShoppingListRepository as bruh
 
 class MainActivity : AppCompatActivity(){
 
