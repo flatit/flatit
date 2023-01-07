@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.flatit.databinding.FragmentShoppingListBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ShoppingListFragment : Fragment() {
 
-    private val shoppingListViewModel by viewModels<ShoppingListViewModel> ()
+    private val shoppingListViewModel by viewModel<ShoppingListViewModel> ()
 
     override fun onCreateView(
         inflater: LayoutInflater,

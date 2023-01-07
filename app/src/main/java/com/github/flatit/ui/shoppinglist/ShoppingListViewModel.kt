@@ -2,16 +2,21 @@ package com.github.flatit.ui.shoppinglist
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.github.flatit.data.ShoppingListRepository
 import com.github.flatit.data.model.ShoppingListItem
+import kotlinx.coroutines.launch
 
-class ShoppingListViewModel : ViewModel() {
+class ShoppingListViewModel(
+    private val shoppingListRepository : ShoppingListRepository
+) : ViewModel() {
 
-    val fakeData = listOf(
-        ShoppingListItem(text = "Tomaten", checked = false, 3),
-        ShoppingListItem(text = "Brot", checked = false, 1),
-        ShoppingListItem(text = "Nudeln", checked = false, 1),
-        ShoppingListItem(text = "Toilettenpapier", checked = false, 1),
-    )
+    val items: MutableLiveData<List<ShoppingListItem>> = MutableLiveData(emptyList())
 
-    val items: MutableLiveData<List<ShoppingListItem>> = MutableLiveData(fakeData)
+    init {
+        viewModelScope.launch {
+            val shoppingListItems = shoppingListRepository.getShoppingListItems()
+            items.value = shoppingListItems
+        }
+    }
 }
