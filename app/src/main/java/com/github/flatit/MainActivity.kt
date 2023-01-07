@@ -10,8 +10,9 @@ import com.github.flatit.ui.shoppinglist.custom_dialog_fragment
 import com.github.flatit.ui.todos.TodosFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.github.flatit.data.ShoppingListRepository as bruh
 
-class MainActivity : AppCompatActivity(), custom_dialog_fragment.NoticeDialogListener {
+class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -44,7 +45,6 @@ class MainActivity : AppCompatActivity(), custom_dialog_fragment.NoticeDialogLis
         }
     }
 
-    override fun on_dialgo_positive_click(dialog: DialogFragment, title_field: String) {
-
-    }
+/*    override fun on_dialgo_positive_click(dialog: DialogFragment, title_field: String) {
+    }*/
 }

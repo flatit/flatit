@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.flatit.R
+import com.github.flatit.data.ShoppingListRepository
 import com.github.flatit.databinding.FragmentShoppingListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class ShoppingListFragment : Fragment() {
 
     private val shoppingListViewModel by viewModel<ShoppingListViewModel> ()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

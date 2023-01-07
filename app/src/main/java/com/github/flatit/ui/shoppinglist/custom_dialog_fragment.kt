@@ -6,14 +6,15 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.LiveData
 import com.github.flatit.R
+import com.github.flatit.data.ShoppingListRepository
+import com.github.flatit.data.model.ShoppingListItem
+import com.google.android.material.textfield.TextInputEditText
+import org.koin.android.ext.android.inject
 
-class custom_dialog_fragment :DialogFragment(){
-    private lateinit var listener: NoticeDialogListener
-
-    interface NoticeDialogListener{
-        fun on_dialgo_positive_click(dialog: DialogFragment, title_field : String)
-    }
+class custom_dialog_fragment() :DialogFragment(){
+    private val shoppingListRepository by inject<ShoppingListRepository> ()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +24,12 @@ class custom_dialog_fragment :DialogFragment(){
         var root_view: View = inflater.inflate(R.layout.dialog_shopping_add, container, false)
 
         val button: Button = root_view.findViewById<Button>(R.id.alert_add_button)
+        val title_field = root_view.findViewById<TextInputEditText>(R.id.alert_title_input)
 
         button.setOnClickListener {
-            listener.on_dialgo_positive_click(this, "Popcorn")
+            /*listener.on_dialgo_positive_click(this, "Popcorn")*/
+            var beislpiel: ShoppingListItem = ShoppingListItem(title_field.text.toString(), false, 1)
+            shoppingListRepository.addShoppingListItems(beislpiel)
             dismiss()
         }
         return root_view
@@ -36,14 +40,5 @@ class custom_dialog_fragment :DialogFragment(){
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         /*dialog.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);*/
         return dialog
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-            listener = context as NoticeDialogListener
-        }catch (e: java.lang.ClassCastException){
-            throw java.lang.ClassCastException((context.toString() + "must implement NoticeDialogListener"))
-        }
     }
 }
