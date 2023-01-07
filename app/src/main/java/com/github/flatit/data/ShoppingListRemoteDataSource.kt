@@ -55,4 +55,5 @@ class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
     override fun deleteItem(item: ShoppingListItem) {
         db.collection(COLLECTION_NAME).document(item.id).delete()
     }
+
 }
