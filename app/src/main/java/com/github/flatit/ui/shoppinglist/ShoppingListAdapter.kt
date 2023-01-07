@@ -20,7 +20,11 @@ class ShoppingListAdapter() : ListAdapter<ShoppingListItem, ShoppingListAdapter.
         val item = getItem(position)
 
         with(holder.binding) {
-            itemShoppingListText.text = item.text
+
+            checkBoxTitle.text = item.text
+            checkBoxTitle.isChecked = item.checked
+            textviewAmount.text = item.amount.toString()
+
         }
     }
 
