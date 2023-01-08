@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.ItemTodosBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class TodosListAdapter : ListAdapter<TodosListItem, TodosListAdapter.TodosViewHolder>(Diff) {
 
@@ -23,6 +24,13 @@ class TodosListAdapter : ListAdapter<TodosListItem, TodosListAdapter.TodosViewHo
             checkboxTodos.isChecked = item.checked
             textViewTodosText.text = item.title
             textViewTodosDescription.text = item.description
+
+            cardTodos.setOnClickListener {
+                MaterialAlertDialogBuilder(root.context)
+                    .setTitle(item.title)
+                    .setMessage(item.description)
+                    .show()
+            }
         }
     }
 
