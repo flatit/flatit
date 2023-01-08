@@ -40,7 +40,4 @@ class MainActivity : AppCompatActivity(){
             }
         }
     }
-
-/*    override fun on_dialgo_positive_click(dialog: DialogFragment, title_field: String) {
-    }*/
 }
