@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.flatit.data.model.BillingDeptItem
 
-class BillingDeptViewModel: ViewModel() {
+class BillingDebtViewModel: ViewModel() {
     val fakeData = listOf(
         BillingDeptItem(flatMate = "Johannes", dept = 34.56),
         BillingDeptItem(flatMate = "Moritz", dept = -56.8),
