@@ -12,7 +12,7 @@ import com.github.flatit.databinding.FragmentBillingBinding
 class BillingFragment : Fragment() {
 
     private val billingExpenseViewModel by viewModels<BillingExpenseViewModel> ()
-    private val billingDeptViewModel by viewModels<BillingDeptViewModel> ()
+    private val billingDebtViewModel by viewModels<BillingDebtViewModel> ()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,17 +25,17 @@ class BillingFragment : Fragment() {
         val expenseLayoutManager = LinearLayoutManager(context)
         val deptLayoutManager = LinearLayoutManager(context)
         val expenseAdapter = BillingExpenseAdapter()
-        val deptAdapter = BillingDeptAdapter()
+        val deptAdapter = BillingDebtAdapter()
 
-        binding.depts.adapter = deptAdapter
+        binding.debts.adapter = deptAdapter
         binding.expenses.adapter = expenseAdapter
-        binding.depts.layoutManager = deptLayoutManager
+        binding.debts.layoutManager = deptLayoutManager
         binding.expenses.layoutManager = expenseLayoutManager
 
         billingExpenseViewModel.items.observe(viewLifecycleOwner) {
             expenseAdapter.submitList(it)
         }
-        billingDeptViewModel.items.observe(viewLifecycleOwner) {
+        billingDebtViewModel.items.observe(viewLifecycleOwner) {
             deptAdapter.submitList(it)
         }
 
