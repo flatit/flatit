@@ -30,6 +30,10 @@ class TodosFragment : Fragment() {
             adapter.submitList(it)
         }
 
+        binding.fabTodos.setOnClickListener() {
+            DialogAddItem().show(childFragmentManager, "todos_add_dialog")
+        }
+
         return root
     }
 }
