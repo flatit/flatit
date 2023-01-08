@@ -5,4 +5,5 @@
     <string name="shopping">Einkaufen</string>
     <string name="todos">Todos</string>
     <string name="add_item">Item hinzufügen</string>
+    <string name="delete_checked_entries">Lösche abgehakte Einträge</string>
 </resources>

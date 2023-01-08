@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Adapter
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.flatit.R
 import com.github.flatit.data.ShoppingListRepository
@@ -50,24 +53,24 @@ class ShoppingListFragment : Fragment() {
         return root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
-        super.onCreate(savedInstanceState)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val menuHost: MenuHost = requireActivity()
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater!!.inflate(R.menu.delete_shopping_menu, menu)
-       /* return super.onCreateOptionsMenu(menu, inflater)*/
-    }
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.delete_shopping_menu, menu)
+            }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {/*
-        if(adapter.itemCount > 1){
-            for (item in 1 ..adapter.itemCount){
-                if()
-            }*/
-        }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when(menuItem.itemId) {
+                    R.id.delete_shopping_list -> {
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        return super.onOptionsItemSelected(item)
     }
 
     private fun onItemChecked(item: ShoppingListItem) {

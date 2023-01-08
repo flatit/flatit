@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/page_overview"
+        android:id="@+id/delete_shopping_list"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_delete_sweep_24"
-        android:title="@string/overview"
+        android:icon="@drawable/ic_delete_sweep"
+        android:title="@string/delete_checked_entries"
         app:showAsAction="ifRoom"/>
 </menu>
