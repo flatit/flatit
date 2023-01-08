@@ -11,4 +11,5 @@
     <string name="increment_amount">Anzahl erhöhen</string>
     <string name="decrement_amount">Anzahl verringern</string>
     <string name="description">Beschreibung</string>
+    <string name="cancel">Abbrechen</string>
 </resources>
