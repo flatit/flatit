@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
-    android:background="?selectableItemBackground">
+    android:padding="16dp">
 
     <CheckBox
         android:id="@+id/checkBox_title"
@@ -42,8 +41,7 @@
         app:layout_constraintStart_toStartOf="@+id/button_decrement_amount"
         app:layout_constraintEnd_toEndOf="@+id/button_increment_amount"
         android:textSize="24sp"
-        android:textColor="@color/black"
-        tools:text="1"
+        tools:text="3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
