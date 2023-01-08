@@ -5,4 +5,9 @@
     <string name="billing">Billing</string>
     <string name="todos">Todos</string>
     <string name="add_item">Add item</string>
+    <string name="delete_checked_entries">Delete checked entries</string>
+    <string name="title">Title</string>
+    <string name="add">Add</string>
+    <string name="decrement_amount">Decrement amount</string>
+    <string name="increment_amount">Increment amount</string>
 </resources>

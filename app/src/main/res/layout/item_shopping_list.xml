@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
-    android:background="?selectableItemBackground">
+    android:padding="16dp">
 
     <CheckBox
         android:id="@+id/checkBox_title"
@@ -14,47 +13,48 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="21dp"
         android:layout_marginBottom="20dp"
-        android:text="Käsebrötchen"
-        android:textSize="24dp"
+        tools:text="Käsebrötchen"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageButton
-        android:id="@+id/button_adding_amount"
+        android:id="@+id/button_increment_amount"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_marginTop="21dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_baseline_add_24"
+        android:src="@drawable/ic_plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="5dp"></ImageButton>
+        android:layout_margin="5dp"
+        android:contentDescription="@string/increment_amount" />
 
     <TextView
         android:id="@+id/textview_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/button_removing_amount"
-        app:layout_constraintEnd_toEndOf="@+id/button_adding_amount"
-        android:textSize="24dp"
-        android:textColor="@color/black"
-        android:text="1"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintStart_toStartOf="@+id/button_decrement_amount"
+        app:layout_constraintEnd_toEndOf="@+id/button_increment_amount"
+        android:textSize="24sp"
+        tools:text="3"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/button_removing_amount"
+        android:id="@+id/button_decrement_amount"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_baseline_remove_24"
+        android:src="@drawable/ic_minus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textview_amount"
-        app:layout_constraintTop_toTopOf="parent"></ImageButton>
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/decrement_amount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

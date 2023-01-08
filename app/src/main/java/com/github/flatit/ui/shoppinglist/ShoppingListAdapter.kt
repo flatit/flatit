@@ -10,8 +10,8 @@ import com.github.flatit.databinding.ItemShoppingListBinding
 
 class ShoppingListAdapter(
     private val onItemChecked: (item: ShoppingListItem) -> Unit,
-    private val onPositveButtonClicked: (item: ShoppingListItem) -> Unit,
-    private val onNegativeButtonClicked: (item: ShoppingListItem) -> Unit,
+    private val onIncrement: (item: ShoppingListItem) -> Unit,
+    private val onDecrement: (item: ShoppingListItem) -> Unit,
 ) : ListAdapter<ShoppingListItem, ShoppingListAdapter.ShoppingListViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListViewHolder {
@@ -25,31 +25,35 @@ class ShoppingListAdapter(
 
         with(holder.binding) {
             checkBoxTitle.setOnCheckedChangeListener { _, isChecked ->
-                                onItemChecked(ShoppingListItem(
-                                        id = item.id,
-                                        text = item.text,
-                                        checked = isChecked,
-                                        amount = item.amount
-                                            ))
-                            }
-            buttonAddingAmount.setOnClickListener {
-                onPositveButtonClicked(ShoppingListItem(
-                    id = item.id,
-                    text = item.text,
-                    checked = item.checked,
-                    amount = item.amount + 1
-                )
+                onItemChecked(
+                    ShoppingListItem(
+                        id = item.id,
+                        text = item.text,
+                        checked = isChecked,
+                        amount = item.amount
+                    )
                 )
             }
-
-            buttonRemovingAmount.setOnClickListener {
-                if (item.amount > 1){
-                    onNegativeButtonClicked(ShoppingListItem(
+            buttonIncrementAmount.setOnClickListener {
+                onIncrement(
+                    ShoppingListItem(
                         id = item.id,
                         text = item.text,
                         checked = item.checked,
-                        amount = item.amount-1
+                        amount = item.amount + 1
                     )
+                )
+            }
+
+            buttonDecrementAmount.setOnClickListener {
+                if (item.amount > 1) {
+                    onDecrement(
+                        ShoppingListItem(
+                            id = item.id,
+                            text = item.text,
+                            checked = item.checked,
+                            amount = item.amount - 1
+                        )
                     )
                 }
             }
@@ -65,11 +69,17 @@ class ShoppingListAdapter(
     ) : RecyclerView.ViewHolder(binding.root)
 
     object Diff : DiffUtil.ItemCallback<ShoppingListItem>() {
-        override fun areItemsTheSame(oldItem: ShoppingListItem, newItem: ShoppingListItem): Boolean {
-            return oldItem.text == newItem.text
+        override fun areItemsTheSame(
+            oldItem: ShoppingListItem,
+            newItem: ShoppingListItem
+        ): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ShoppingListItem, newItem: ShoppingListItem): Boolean {
+        override fun areContentsTheSame(
+            oldItem: ShoppingListItem,
+            newItem: ShoppingListItem
+        ): Boolean {
             return oldItem == newItem
         }
     }
