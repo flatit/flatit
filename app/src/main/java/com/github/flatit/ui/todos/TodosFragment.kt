@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.flatit.R
 import com.github.flatit.data.TodosRepository
+import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.FragmentTodosBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -31,7 +32,9 @@ class TodosFragment : Fragment() {
         val root: View = binding.root
 
         val layoutManager = LinearLayoutManager(context)
-        val adapter = TodosListAdapter()
+        val adapter = TodosListAdapter(
+            onItemChecked = ::onItemChecked
+        )
         binding.todosList.adapter = adapter
         binding.todosList.layoutManager = layoutManager
 
@@ -69,5 +72,9 @@ class TodosFragment : Fragment() {
         }
 
         return root
+    }
+
+    private fun onItemChecked(item: TodosListItem) {
+        todosRepository.updateItem(item)
     }
 }
