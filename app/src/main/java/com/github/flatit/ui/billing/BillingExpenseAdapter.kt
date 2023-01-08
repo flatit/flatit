@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.data.model.BillingExpenseItem
-import com.github.flatit.databinding.SingleExpenseBinding
+import com.github.flatit.databinding.ItemExpenseBinding
 
 class BillingExpenseAdapter : ListAdapter<BillingExpenseItem, BillingExpenseAdapter.BillingViewHolder>(Diff){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return BillingViewHolder(SingleExpenseBinding.inflate(inflater, parent, false))
+        return BillingViewHolder(ItemExpenseBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: BillingViewHolder, position: Int) {
@@ -25,7 +25,7 @@ class BillingExpenseAdapter : ListAdapter<BillingExpenseItem, BillingExpenseAdap
     }
 
     class BillingViewHolder(
-        val binding: SingleExpenseBinding
+        val binding: ItemExpenseBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
     object Diff : DiffUtil.ItemCallback<BillingExpenseItem>() {

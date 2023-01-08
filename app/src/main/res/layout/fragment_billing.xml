@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.billing.BillingFragment"
-            tools:listitem="@layout/single_debt"
+            tools:listitem="@layout/item_debt"
             />
     </com.google.android.material.card.MaterialCardView>
 
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".ui.billing.BillingFragment"
-        tools:listitem="@layout/single_expense"
+        tools:listitem="@layout/item_expense"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
