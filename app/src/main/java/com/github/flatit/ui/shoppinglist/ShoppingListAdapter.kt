@@ -34,7 +34,7 @@ class ShoppingListAdapter(
                     )
                 )
             }
-            buttonAddingAmount.setOnClickListener {
+            buttonIncrementAmount.setOnClickListener {
                 onIncrement(
                     ShoppingListItem(
                         id = item.id,
@@ -45,7 +45,7 @@ class ShoppingListAdapter(
                 )
             }
 
-            buttonRemovingAmount.setOnClickListener {
+            buttonDecrementAmount.setOnClickListener {
                 if (item.amount > 1) {
                     onDecrement(
                         ShoppingListItem(
