@@ -61,6 +61,7 @@ class ShoppingListFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.delete_shopping_list -> {
+                        shoppingListRepository.deleteSelectedItems()
                         true
                     }
                     else -> false

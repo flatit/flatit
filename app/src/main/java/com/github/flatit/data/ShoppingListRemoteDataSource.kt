@@ -12,6 +12,7 @@ interface ShoppingListRemoteDataSource {
     fun addItem(item: ShoppingListItem)
     fun updateItem(item: ShoppingListItem)
     fun deleteItem(item: ShoppingListItem)
+    fun deleteSelectedItems()
 }
 
 class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
@@ -24,7 +25,7 @@ class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
     override fun getItems(): LiveData<List<ShoppingListItem>> {
         val items = MutableLiveData<List<ShoppingListItem>>()
 
-        db.collection(COLLECTION_NAME).addSnapshotListener { snapshot, _ ->
+        db.collection(COLLECTION_NAME).orderBy("checked").addSnapshotListener { snapshot, _ ->
             items.value = snapshot?.mapNotNull { item ->
                 ShoppingListItem(
                     id = item.id,
@@ -54,6 +55,15 @@ class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
 
     override fun deleteItem(item: ShoppingListItem) {
         db.collection(COLLECTION_NAME).document(item.id).delete()
+    }
+
+    override fun deleteSelectedItems() {
+        db.collection(COLLECTION_NAME).whereEqualTo("checked", true).get()
+            .addOnSuccessListener { items ->
+                items.forEach {
+                    it.reference.delete()
+                }
+            }
     }
 
 }

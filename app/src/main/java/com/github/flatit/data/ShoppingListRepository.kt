@@ -8,6 +8,7 @@ interface ShoppingListRepository {
     fun addItem(item: ShoppingListItem)
     fun updateItem(item: ShoppingListItem)
     fun deleteItem(item: ShoppingListItem)
+    fun deleteSelectedItems()
 }
 
 class ShoppingListRepositoryImpl(
@@ -28,5 +29,9 @@ class ShoppingListRepositoryImpl(
 
     override fun deleteItem(item: ShoppingListItem) {
         return dataSource.deleteItem(item)
+    }
+
+    override fun deleteSelectedItems() {
+        return dataSource.deleteSelectedItems()
     }
 }
