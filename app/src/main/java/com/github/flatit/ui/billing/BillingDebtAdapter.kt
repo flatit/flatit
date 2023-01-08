@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.github.flatit.data.model.BillingDeptItem
+import com.github.flatit.data.model.BillingDebtItem
 import com.github.flatit.databinding.SingleDebtBinding
 
-class BillingDebtAdapter : ListAdapter<BillingDeptItem, BillingDebtAdapter.BillingViewHolder>(Diff){
+class BillingDebtAdapter :
+    ListAdapter<BillingDebtItem, BillingDebtAdapter.BillingViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,8 +22,8 @@ class BillingDebtAdapter : ListAdapter<BillingDeptItem, BillingDebtAdapter.Billi
 
         with(holder.binding) {
             var debt: String = ""
-            if (item.dept >= 0) debt = " gets " else debt = " owes "
-            singleDebtText.text = item.flatMate + debt + item.dept + "€"
+            if (item.debt >= 0) debt = " gets " else debt = " owes "
+            singleDebtText.text = item.flatMate + debt + item.debt + "€"
         }
     }
 
@@ -30,12 +31,15 @@ class BillingDebtAdapter : ListAdapter<BillingDeptItem, BillingDebtAdapter.Billi
         val binding: SingleDebtBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
-    object Diff : DiffUtil.ItemCallback<BillingDeptItem>() {
-        override fun areItemsTheSame(oldItem: BillingDeptItem, newItem: BillingDeptItem): Boolean {
-            return oldItem.flatMate == newItem.flatMate && oldItem.dept == newItem.dept
+    object Diff : DiffUtil.ItemCallback<BillingDebtItem>() {
+        override fun areItemsTheSame(oldItem: BillingDebtItem, newItem: BillingDebtItem): Boolean {
+            return oldItem.flatMate == newItem.flatMate && oldItem.debt == newItem.debt
         }
 
-        override fun areContentsTheSame(oldItem: BillingDeptItem, newItem: BillingDeptItem): Boolean {
+        override fun areContentsTheSame(
+            oldItem: BillingDebtItem,
+            newItem: BillingDebtItem
+        ): Boolean {
             return oldItem == newItem
         }
     }

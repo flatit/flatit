@@ -40,7 +40,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="@string/add_item"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_plus"
         />
 
 </LinearLayout>

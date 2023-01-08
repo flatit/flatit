@@ -1,6 +1,6 @@
 package com.github.flatit.data.model
 
-data class BillingDeptItem(
+data class BillingDebtItem(
     val flatMate: String,
-    val dept: Double
+    val debt: Double
 )
