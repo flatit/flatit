@@ -43,32 +43,7 @@ class TodosFragment : Fragment() {
         }
 
         binding.fabTodos.setOnClickListener {
-            MaterialAlertDialogBuilder(root.context)
-                .setTitle(R.string.add_item)
-                .setView(inflater.inflate(R.layout.dialog_todos_add, binding.root, false))
-                .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .setPositiveButton(R.string.add) { dialog, _ ->
-                    val title =
-                        (dialog as AlertDialog).findViewById<TextInputEditText>(R.id.dialog_todos_input_title)
-                    val description =
-                        dialog.findViewById<TextInputEditText>(R.id.dialog_todos_input_description)
-
-                    if (title != null && description != null) {
-                        val item = TodosListItem(
-                            id = UUID.randomUUID().toString(),
-                            title = title.text.toString(),
-                            description = description.text.toString(),
-                            checked = false
-                        )
-
-                        todosRepository.addItem(item)
-                    }
-
-                    dialog.dismiss()
-                }
-                .show()
+            DialogAddTodo().show(parentFragmentManager, "DialogAddTodo")
         }
 
         return root
