@@ -24,7 +24,7 @@ class TodosFirebaseDataSource : TodosRemoteDataSource {
     override fun getItems(): LiveData<List<TodosListItem>> {
         val items = MutableLiveData<List<TodosListItem>>()
 
-        db.collection(COLLECTION_NAME).addSnapshotListener { snapshot, _ ->
+        db.collection(COLLECTION_NAME).orderBy("checked").addSnapshotListener { snapshot, _ ->
             items.value = snapshot?.mapNotNull { item ->
                 TodosListItem(
                     id = item.id,

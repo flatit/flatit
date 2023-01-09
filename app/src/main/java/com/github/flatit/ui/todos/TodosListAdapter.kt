@@ -5,13 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.github.flatit.data.model.ShoppingListItem
+import com.github.flatit.R
+import com.github.flatit.data.TodosRepository
 import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.ItemTodosBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class TodosListAdapter(
-    private val onItemChecked: (item: TodosListItem) -> Unit
+    private val onItemChecked: (item: TodosListItem) -> Unit,
+    private val onItemDelete: (item: TodosListItem) -> Unit
 ) : ListAdapter<TodosListItem, TodosListAdapter.TodosViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodosViewHolder {
@@ -38,6 +40,13 @@ class TodosListAdapter(
                 MaterialAlertDialogBuilder(root.context)
                     .setTitle(item.title)
                     .setMessage(item.description)
+                    .setNeutralButton(R.string.delete) { _, _ ->
+                        onItemDelete(item)
+                    }.setPositiveButton(R.string.mark_as_done) { _, _ ->
+                        onItemChecked(
+                            TodosListItem(id = item.id, title = item.title, description = item.description, checked = true)
+                        )
+                    }
                     .show()
             }
         }

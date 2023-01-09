@@ -27,7 +27,8 @@ class TodosFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(context)
         val adapter = TodosListAdapter(
-            onItemChecked = ::onItemChecked
+            onItemChecked = todosRepository::updateItem,
+            onItemDelete = todosRepository::deleteItem
         )
         binding.todosList.adapter = adapter
         binding.todosList.layoutManager = layoutManager
@@ -41,9 +42,5 @@ class TodosFragment : Fragment() {
         }
 
         return root
-    }
-
-    private fun onItemChecked(item: TodosListItem) {
-        todosRepository.updateItem(item)
     }
 }

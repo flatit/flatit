@@ -12,4 +12,6 @@
     <string name="decrement_amount">Anzahl verringern</string>
     <string name="description">Beschreibung</string>
     <string name="cancel">Abbrechen</string>
+    <string name="delete">Löschen</string>
+    <string name="mark_as_done">Als erledigt markeiren</string>
 </resources>
