@@ -3,7 +3,6 @@ package com.github.flatit.ui.todos
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.android.ext.android.inject
 import java.util.*
 
-class DialogAddTodo : DialogFragment() {
+class AddTodoDialog : DialogFragment() {
 
     private val todosRepository by inject<TodosRepository>()
 
@@ -30,19 +29,20 @@ class DialogAddTodo : DialogFragment() {
         val dialog = MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.add_item)
             .setView(binding.root)
-            .setPositiveButton(R.string.add) { dialog, _ ->
-                val item = TodosListItem(
-                    id = UUID.randomUUID().toString(),
-                    title = binding.inputTitle.text.toString(),
-                    description = binding.inputDescription.text.toString(),
-                    checked = false
+            .setPositiveButton(R.string.add) { _, _ ->
+                todosRepository.addItem(
+                    TodosListItem(
+                        id = UUID.randomUUID().toString(),
+                        title = binding.todosInputTitle.text.toString(),
+                        description = binding.todosInputDescription.text.toString(),
+                        checked = false
+                    )
                 )
 
-                todosRepository.addItem(item)
-                dialog.dismiss()
+                dismiss()
             }
-            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                dialog.dismiss()
+            .setNegativeButton(getString(R.string.cancel)) { _, _ ->
+                dismiss()
             }
             .create()
 
@@ -51,8 +51,8 @@ class DialogAddTodo : DialogFragment() {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
         }
 
-        binding.inputTitle.addTextChangedListener {
-            dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = binding.inputTitle.text?.isNotEmpty() ?: false
+        binding.todosInputTitle.addTextChangedListener {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = binding.todosInputTitle.text?.isNotEmpty() ?: false
         }
 
         return dialog
@@ -63,7 +63,7 @@ class DialogAddTodo : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding.inputTitle.requestFocus()
+        binding.todosInputTitle.requestFocus()
         requireDialog().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
         return super.onCreateView(inflater, container, savedInstanceState)
