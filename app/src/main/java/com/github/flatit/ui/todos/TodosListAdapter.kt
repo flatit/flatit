@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.R
-import com.github.flatit.data.TodosRepository
 import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.ItemTodosBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -27,9 +26,14 @@ class TodosListAdapter(
 
         with(holder.binding) {
             checkboxTodos.isChecked = item.checked
-            checkboxTodos.setOnCheckedChangeListener { _, isChecked ->
+            checkboxTodos.setOnClickListener {
                 onItemChecked(
-                    TodosListItem(id = item.id, title = item.title, description = item.description, checked = isChecked)
+                    TodosListItem(
+                        id = item.id,
+                        title = item.title,
+                        description = item.description,
+                        checked = !item.checked
+                    )
                 )
             }
 
@@ -42,12 +46,17 @@ class TodosListAdapter(
                     .setMessage(item.description)
                     .setNeutralButton(R.string.delete) { _, _ ->
                         onItemDelete(item)
-                    }.setPositiveButton(R.string.mark_as_done) { _, _ ->
-                        onItemChecked(
-                            TodosListItem(id = item.id, title = item.title, description = item.description, checked = true)
-                        )
                     }
-                    .show()
+                    .setPositiveButton(if (item.checked) R.string.mark_as_unresolved else R.string.mark_as_done) { _, _ ->
+                        onItemChecked(
+                            TodosListItem(
+                                id = item.id,
+                                title = item.title,
+                                description = item.description,
+                                checked = !item.checked
+                            )
+                        )
+                    }.show()
             }
         }
     }

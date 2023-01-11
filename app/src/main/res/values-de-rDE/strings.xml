@@ -13,5 +13,6 @@
     <string name="description">Beschreibung</string>
     <string name="cancel">Abbrechen</string>
     <string name="delete">Löschen</string>
-    <string name="mark_as_done">Als erledigt markeiren</string>
+    <string name="mark_as_done">Als erledigt markieren</string>
+    <string name="mark_as_unresolved">Als unerledigt markieren</string>
 </resources>

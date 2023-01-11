@@ -14,4 +14,5 @@
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="mark_as_done">Mark as done</string>
+    <string name="mark_as_unresolved">Mark as unresolved</string>
 </resources>
