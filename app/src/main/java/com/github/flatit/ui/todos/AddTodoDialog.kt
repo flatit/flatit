@@ -1,4 +1,4 @@
-package com.github.flatit.ui.shoppinglist
+package com.github.flatit.ui.todos
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,31 +10,33 @@ import android.view.WindowManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import com.github.flatit.R
-import com.github.flatit.data.ShoppingListRepository
-import com.github.flatit.data.model.ShoppingListItem
-import com.github.flatit.databinding.DialogShoppingListAddBinding
+import com.github.flatit.data.TodosRepository
+import com.github.flatit.data.model.TodosListItem
+import com.github.flatit.databinding.DialogTodosAddBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.android.ext.android.inject
 import java.util.*
 
-class AddItemDialog : DialogFragment() {
+class AddTodoDialog : DialogFragment() {
 
-    private lateinit var binding: DialogShoppingListAddBinding
-    private val shoppingListRepository by inject<ShoppingListRepository> ()
+    private val todosRepository by inject<TodosRepository>()
+
+    private lateinit var binding: DialogTodosAddBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = DialogShoppingListAddBinding.inflate(requireActivity().layoutInflater)
+        binding = DialogTodosAddBinding.inflate(requireActivity().layoutInflater)
 
         val dialog = MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.add_item)
             .setView(binding.root)
             .setPositiveButton(R.string.add) { _, _ ->
-                shoppingListRepository.addItem(
-                    ShoppingListItem(
+                todosRepository.addItem(
+                    TodosListItem(
                         id = UUID.randomUUID().toString(),
-                        text = binding.shoppingListInputTitle.text.toString(),
-                        checked = false,
-                        amount = 1)
+                        title = binding.todosInputTitle.text.toString(),
+                        description = binding.todosInputDescription.text.toString(),
+                        checked = false
+                    )
                 )
 
                 dismiss()
@@ -49,8 +51,8 @@ class AddItemDialog : DialogFragment() {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = false
         }
 
-        binding.shoppingListInputTitle.addTextChangedListener {
-            dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = binding.shoppingListInputTitle.text?.isNotEmpty() ?: false
+        binding.todosInputTitle.addTextChangedListener {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = binding.todosInputTitle.text?.isNotEmpty() ?: false
         }
 
         return dialog
@@ -61,7 +63,7 @@ class AddItemDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding.shoppingListInputTitle.requestFocus()
+        binding.todosInputTitle.requestFocus()
         requireDialog().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
         return super.onCreateView(inflater, container, savedInstanceState)

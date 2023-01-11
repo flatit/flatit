@@ -10,4 +10,9 @@
     <string name="add">Add</string>
     <string name="decrement_amount">Decrement amount</string>
     <string name="increment_amount">Increment amount</string>
+    <string name="description">Description</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="mark_as_done">Mark as done</string>
+    <string name="mark_as_unresolved">Mark as unresolved</string>
 </resources>
