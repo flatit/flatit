@@ -18,16 +18,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         loadFragment(savedInstanceState?.getInt(selectedFragment))
 
-        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        navigation.setOnItemSelectedListener { item ->
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
             loadFragment(item.itemId)
 
             true
         }
+    }
+
+    private fun loadFragment(id: Int?) {
+        supportFragmentManager.beginTransaction().replace(R.id.container, getFragment(id)).commit()
+        supportActionBar?.title = getFragmentTitle(id)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -35,11 +41,6 @@ class MainActivity : AppCompatActivity() {
 
         val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         outState.putInt(selectedFragment, navigation.selectedItemId)
-    }
-
-    private fun loadFragment(id: Int?) {
-        supportFragmentManager.beginTransaction().replace(R.id.container, getFragment(id)).commit()
-        supportActionBar?.title = getFragmentTitle(id)
     }
 
     private fun getFragment(id: Int?) : Fragment {
