@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.billing.BillingFragment">
+    tools:context=".ui.finances.FinancesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:id="@+id/debts"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".ui.billing.BillingFragment"
+                tools:context=".ui.finances.FinancesFragment"
                 tools:listitem="@layout/item_debt" />
 
         </com.google.android.material.card.MaterialCardView>
@@ -33,7 +33,7 @@
             android:id="@+id/expenses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ui.billing.BillingFragment"
+            tools:context=".ui.finances.FinancesFragment"
             tools:listitem="@layout/item_expense" />
     </LinearLayout>
 

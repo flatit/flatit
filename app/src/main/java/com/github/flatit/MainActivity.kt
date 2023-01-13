@@ -2,11 +2,9 @@ package com.github.flatit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.github.flatit.databinding.ActivityMainBinding
-import com.github.flatit.ui.billing.BillingFragment
+import com.github.flatit.ui.finances.FinancesFragment
 import com.github.flatit.ui.overview.OverviewFragment
 import com.github.flatit.ui.shoppinglist.ShoppingListFragment
 import com.github.flatit.ui.todos.TodosFragment
@@ -52,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 ShoppingListFragment()
             }
             R.id.page_billing -> {
-                BillingFragment()
+                FinancesFragment()
             }
             R.id.page_todos -> {
                 TodosFragment()
@@ -70,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.shopping)
             }
             R.id.page_billing -> {
-                getString(R.string.billing)
+                getString(R.string.finances)
             }
             R.id.page_todos -> {
                 getString(R.string.todos)

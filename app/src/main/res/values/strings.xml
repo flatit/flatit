@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">FlatIt</string>
     <string name="overview">Overview</string>
     <string name="shopping">Shopping</string>
-    <string name="billing">Billing</string>
+    <string name="finances">Finances</string>
     <string name="todos">Todos</string>
     <string name="add_item">Add item</string>
     <string name="delete_checked_entries">Delete checked entries</string>

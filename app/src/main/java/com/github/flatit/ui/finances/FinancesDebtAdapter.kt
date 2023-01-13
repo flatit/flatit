@@ -1,4 +1,4 @@
-package com.github.flatit.ui.billing
+package com.github.flatit.ui.finances
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.data.model.BillingDebtItem
 import com.github.flatit.databinding.ItemDebtBinding
 
-class BillingDebtAdapter :
-    ListAdapter<BillingDebtItem, BillingDebtAdapter.BillingViewHolder>(Diff) {
+class FinancesDebtAdapter :
+    ListAdapter<BillingDebtItem, FinancesDebtAdapter.BillingViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingViewHolder {
         val inflater = LayoutInflater.from(parent.context)

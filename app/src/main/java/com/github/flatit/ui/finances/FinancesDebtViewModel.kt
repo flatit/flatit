@@ -1,10 +1,10 @@
-package com.github.flatit.ui.billing
+package com.github.flatit.ui.finances
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.flatit.data.model.BillingDebtItem
 
-class BillingDebtViewModel: ViewModel() {
+class FinancesDebtViewModel: ViewModel() {
     val fakeData = listOf(
         BillingDebtItem(flatMate = "Johannes", debt = 34.56),
         BillingDebtItem(flatMate = "Moritz", debt = -56.8),
