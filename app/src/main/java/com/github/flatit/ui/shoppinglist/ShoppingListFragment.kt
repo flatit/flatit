@@ -11,7 +11,6 @@ import com.github.flatit.R
 import com.github.flatit.data.ShoppingListRepository
 import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.databinding.FragmentShoppingListBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -42,9 +41,8 @@ class ShoppingListFragment : Fragment() {
             adapter.submitList(it)
         }
 
-        root.findViewById<FloatingActionButton>(R.id.floating_action_button)?.setOnClickListener {
-            val dialog = AddItemDialog()
-            dialog.show(parentFragmentManager, "dialog")
+        binding.floatingActionButton.setOnClickListener {
+            AddItemDialog().show(parentFragmentManager, "AddItemDialogNew")
         }
 
         return root

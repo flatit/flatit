@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/page_overview"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
-        android:title="@string/overview"/>
+        android:icon="@drawable/ic_overview"
+        android:title="@string/overview"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/page_shopping_list"
         android:enabled="true"
-        android:icon="@drawable/ic_shopping_bag"
-        android:title="@string/shopping"/>
+        android:icon="@drawable/ic_shopping"
+        android:title="@string/shopping"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/page_billing"
         android:enabled="true"
-        android:icon="@drawable/ic_euro"
-        android:title="@string/billing"/>
+        android:icon="@drawable/ic_finances"
+        android:title="@string/billing"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/page_todos"
         android:enabled="true"
         android:icon="@drawable/ic_todos"
-        android:title="@string/todos"/>
+        android:title="@string/todos"
+        app:showAsAction="ifRoom"/>
 </menu>
