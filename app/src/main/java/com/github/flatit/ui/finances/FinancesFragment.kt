@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.flatit.data.FinancesRepository
 import com.github.flatit.databinding.FragmentFinancesBinding
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FinancesFragment : Fragment() {
 
-    private val billingExpenseViewModel by viewModels<FinancesExpenseViewModel> ()
-    private val billingDebtViewModel by viewModels<FinancesDebtViewModel> ()
+    private val financesExpenseViewModel by viewModel<FinancesExpenseViewModel> ()
+    private val financesDebtViewModel by viewModel<FinancesDebtViewModel> ()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,10 +34,10 @@ class FinancesFragment : Fragment() {
         binding.debts.layoutManager = deptLayoutManager
         binding.expenses.layoutManager = expenseLayoutManager
 
-        billingExpenseViewModel.items.observe(viewLifecycleOwner) {
+        financesExpenseViewModel.items.observe(viewLifecycleOwner) {
             expenseAdapter.submitList(it)
         }
-        billingDebtViewModel.items.observe(viewLifecycleOwner) {
+        financesDebtViewModel.items.observe(viewLifecycleOwner) {
             deptAdapter.submitList(it)
         }
 

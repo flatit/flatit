@@ -1,11 +1,12 @@
 package com.github.flatit.data.model
 
-import java.time.LocalDateTime
+import com.google.firebase.Timestamp
 
-data class BillingExpenseItem(
+data class FinancesExpenseItem(
+    val id: String,
     val title: String,
     val description: String,
     val person: String,
     val expense: Double,
-    val timestamp: LocalDateTime
+    val timestamp: Timestamp
 )

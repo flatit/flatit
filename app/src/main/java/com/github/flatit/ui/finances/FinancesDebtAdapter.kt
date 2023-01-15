@@ -5,19 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.github.flatit.data.model.BillingDebtItem
+import com.github.flatit.data.model.FinancesDebtItem
 import com.github.flatit.databinding.ItemDebtBinding
 
 class FinancesDebtAdapter :
-    ListAdapter<BillingDebtItem, FinancesDebtAdapter.BillingViewHolder>(Diff) {
+    ListAdapter<FinancesDebtItem, FinancesDebtAdapter.FinancesViewHolder>(Diff) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FinancesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return BillingViewHolder(ItemDebtBinding.inflate(inflater, parent, false))
+        return FinancesViewHolder(ItemDebtBinding.inflate(inflater, parent, false))
     }
 
-    override fun onBindViewHolder(holder: BillingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FinancesViewHolder, position: Int) {
         val item = getItem(position)
 
         with(holder.binding) {
@@ -27,18 +27,18 @@ class FinancesDebtAdapter :
         }
     }
 
-    class BillingViewHolder(
+    class FinancesViewHolder(
         val binding: ItemDebtBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
-    object Diff : DiffUtil.ItemCallback<BillingDebtItem>() {
-        override fun areItemsTheSame(oldItem: BillingDebtItem, newItem: BillingDebtItem): Boolean {
-            return oldItem.flatMate == newItem.flatMate && oldItem.debt == newItem.debt
+    object Diff : DiffUtil.ItemCallback<FinancesDebtItem>() {
+        override fun areItemsTheSame(oldItem: FinancesDebtItem, newItem: FinancesDebtItem): Boolean {
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: BillingDebtItem,
-            newItem: BillingDebtItem
+            oldItem: FinancesDebtItem,
+            newItem: FinancesDebtItem
         ): Boolean {
             return oldItem == newItem
         }

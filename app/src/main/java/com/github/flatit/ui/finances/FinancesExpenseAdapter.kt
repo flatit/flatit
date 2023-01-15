@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.github.flatit.data.model.BillingExpenseItem
+import com.github.flatit.data.model.FinancesExpenseItem
 import com.github.flatit.databinding.ItemExpenseBinding
 
-class FinancesExpenseAdapter : ListAdapter<BillingExpenseItem, FinancesExpenseAdapter.BillingViewHolder>(Diff){
+class FinancesExpenseAdapter : ListAdapter<FinancesExpenseItem, FinancesExpenseAdapter.BillingViewHolder>(Diff){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,12 +28,12 @@ class FinancesExpenseAdapter : ListAdapter<BillingExpenseItem, FinancesExpenseAd
         val binding: ItemExpenseBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
-    object Diff : DiffUtil.ItemCallback<BillingExpenseItem>() {
-        override fun areItemsTheSame(oldItem: BillingExpenseItem, newItem: BillingExpenseItem): Boolean {
+    object Diff : DiffUtil.ItemCallback<FinancesExpenseItem>() {
+        override fun areItemsTheSame(oldItem: FinancesExpenseItem, newItem: FinancesExpenseItem): Boolean {
             return oldItem.timestamp == newItem.timestamp
         }
 
-        override fun areContentsTheSame(oldItem: BillingExpenseItem, newItem: BillingExpenseItem): Boolean {
+        override fun areContentsTheSame(oldItem: FinancesExpenseItem, newItem: FinancesExpenseItem): Boolean {
             return oldItem == newItem
         }
     }
