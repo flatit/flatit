@@ -19,7 +19,10 @@ val appModule = module {
     single<TodosRepository> {TodosRepositoryImpl(get()) }
 
     single<FinancesRemoteDataSource> {FinancesFirebaseDataSource() }
-    single<FinancesRepository> {FinancesRepositoryImpl(get()) }
+    single<FinancesRepository> { FinancesRepositoryImpl(get()) }
+
+    single<FlatmateRemoteDataSource> { FlatmateFirebaseDataSource() }
+    single<FlatmateRepository> { FlatmateRepositoryImpl(get()) }
 
     viewModel { ShoppingListViewModel(get()) }
     viewModel { TodosViewModel(get()) }
