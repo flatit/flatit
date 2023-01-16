@@ -14,7 +14,7 @@
         android:title="@string/shopping"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/page_billing"
+        android:id="@+id/page_finances"
         android:enabled="true"
         android:icon="@drawable/ic_finances"
         android:title="@string/finances"

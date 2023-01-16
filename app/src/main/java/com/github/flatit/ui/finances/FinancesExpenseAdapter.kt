@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.data.model.FinancesExpenseItem
 import com.github.flatit.databinding.ItemExpenseBinding
 
-class FinancesExpenseAdapter : ListAdapter<FinancesExpenseItem, FinancesExpenseAdapter.BillingViewHolder>(Diff){
+class FinancesExpenseAdapter : ListAdapter<FinancesExpenseItem, FinancesExpenseAdapter.FinancesViewHolder>(Diff){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FinancesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return BillingViewHolder(ItemExpenseBinding.inflate(inflater, parent, false))
+        return FinancesViewHolder(ItemExpenseBinding.inflate(inflater, parent, false))
     }
 
-    override fun onBindViewHolder(holder: BillingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FinancesViewHolder, position: Int) {
         val item = getItem(position)
 
         with(holder.binding) {
@@ -24,7 +24,7 @@ class FinancesExpenseAdapter : ListAdapter<FinancesExpenseItem, FinancesExpenseA
         }
     }
 
-    class BillingViewHolder(
+    class FinancesViewHolder(
         val binding: ItemExpenseBinding
     ) : RecyclerView.ViewHolder(binding.root)
 

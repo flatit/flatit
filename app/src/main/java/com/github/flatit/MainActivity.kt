@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             R.id.page_shopping_list -> {
                 ShoppingListFragment()
             }
-            R.id.page_billing -> {
+            R.id.page_finances -> {
                 FinancesFragment()
             }
             R.id.page_todos -> {
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             R.id.page_shopping_list -> {
                 getString(R.string.shopping)
             }
-            R.id.page_billing -> {
+            R.id.page_finances -> {
                 getString(R.string.finances)
             }
             R.id.page_todos -> {
