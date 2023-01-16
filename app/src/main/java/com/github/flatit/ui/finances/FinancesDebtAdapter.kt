@@ -25,7 +25,7 @@ class FinancesDebtAdapter : ListAdapter<FinancesDebtItem, FinancesDebtAdapter.Fi
 
         with(holder.binding) {
             var debt: String = ""
-            if (item.debt >= 0) debt = " gets " else debt = " owes "
+            if (item.debt >= 0) debt = " owes " else debt = " gets "
             singleDebtText.text = "${item.flatMate} ${debt} ${item.debt}€"
         }
     }
