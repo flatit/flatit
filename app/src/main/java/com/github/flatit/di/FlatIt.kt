@@ -2,8 +2,7 @@ package com.github.flatit.di
 
 import android.app.Application
 import com.github.flatit.data.*
-import com.github.flatit.ui.finances.FinancesDebtViewModel
-import com.github.flatit.ui.finances.FinancesExpenseViewModel
+import com.github.flatit.ui.finances.FinancesViewModel
 import com.github.flatit.ui.shoppinglist.ShoppingListViewModel
 import com.github.flatit.ui.todos.TodosViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -26,8 +25,7 @@ val appModule = module {
 
     viewModel { ShoppingListViewModel(get()) }
     viewModel { TodosViewModel(get()) }
-    viewModel { FinancesExpenseViewModel(get()) }
-    viewModel { FinancesDebtViewModel(get()) }
+    viewModel { FinancesViewModel(get()) }
 }
 
 class FlatIt : Application() {
