@@ -29,7 +29,7 @@ class FinancesFirebaseDataSource : FinancesRemoteDataSource {
 
     override fun getExpenseItems(): LiveData<List<FinancesExpenseItem>> {
 
-        db.collection(COLLECTION_NAME).document("expenses").collection("Johannes").addSnapshotListener { snapshot, _ ->
+        db.collection(COLLECTION_NAME).addSnapshotListener { snapshot, _ ->
             expenseItems.value = snapshot?.mapNotNull { item ->
                 FinancesExpenseItem(
                     id = item.id,
@@ -61,15 +61,22 @@ class FinancesFirebaseDataSource : FinancesRemoteDataSource {
     }*/
 
     override fun addExpenseItem(item: FinancesExpenseItem) {
-        TODO("Not yet implemented")
+        db.collection(COLLECTION_NAME).document(item.id)
+            .set(item)
+            .addOnSuccessListener { _ ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${item.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
     }
 
     override fun updateExpenseItem(item: FinancesExpenseItem) {
-        TODO("Not yet implemented")
+        db.collection(COLLECTION_NAME).document(item.id).set(item)
     }
 
     override fun deleteExpenseItem(item: FinancesExpenseItem) {
-        TODO("Not yet implemented")
+        db.collection(COLLECTION_NAME).document(item.id).delete()
     }
 
     override fun getDebts(): LiveData<List<FinancesDebtItem>> {
@@ -90,8 +97,6 @@ class FinancesFirebaseDataSource : FinancesRemoteDataSource {
 
         debtsFlatMateMap.forEach { k, v ->
             newdebtsList.add(FinancesDebtItem(flatMate = k, debt = averageShare - v))
-            Log.d("debts", v.toString())
-            Log.d("debts", "avergae: " + averageShare.toString())
         }
 
         debtsList.value = newdebtsList

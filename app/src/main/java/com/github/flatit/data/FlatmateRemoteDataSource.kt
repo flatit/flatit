@@ -19,19 +19,18 @@ class FlatmateFirebaseDataSource : FlatmateRemoteDataSource {
     private val COLLECTION_NAME = "flatmates";
 
     private val db = Firebase.firestore
+    private val flatMates = MutableLiveData<List<Flatmate>>()
 
     override fun getFlatmates(): LiveData<List<Flatmate>> {
-        val items = MutableLiveData<List<Flatmate>>()
-
         db.collection(COLLECTION_NAME).addSnapshotListener { snapshot, _ ->
-            items.value = snapshot?.mapNotNull { item ->
+            flatMates.value = snapshot?.mapNotNull { item ->
                 Flatmate(
                     id = item.id,
                     name = item.getString("name").orEmpty())
             }.orEmpty()
         }
 
-        return items
+        return flatMates
     }
 
     override fun addFlatmate(item: Flatmate) {
