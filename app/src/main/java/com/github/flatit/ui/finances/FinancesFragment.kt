@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.flatit.data.FinancesRepository
 import com.github.flatit.data.FlatmateRepository
 import com.github.flatit.databinding.FragmentFinancesBinding
+import com.github.flatit.ui.todos.AddTodoDialog
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FinancesFragment : Fragment() {
 
     private val financesViewModel by viewModel<FinancesViewModel> ()
+    private val financesRepository by inject<FinancesRepository> ()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +28,10 @@ class FinancesFragment : Fragment() {
 
         val expenseLayoutManager = LinearLayoutManager(context)
         val deptLayoutManager = LinearLayoutManager(context)
-        val expenseAdapter = FinancesExpenseAdapter()
+        val expenseAdapter = FinancesExpenseAdapter(
+            onExpenseSave = financesRepository::updateExpenseItem,
+            onExpenseDelete = financesRepository::deleteExpenseItem,
+        )
         val deptAdapter = FinancesDebtAdapter()
 
         binding.debts.adapter = deptAdapter
@@ -39,6 +44,10 @@ class FinancesFragment : Fragment() {
         }
         financesViewModel.debts.observe(viewLifecycleOwner) {
             deptAdapter.submitList(it)
+        }
+
+        binding.fabFinances.setOnClickListener {
+            AddExpenseDialog().show(parentFragmentManager, "DialogAddExpense")
         }
 
         return root

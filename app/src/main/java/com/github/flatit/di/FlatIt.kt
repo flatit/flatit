@@ -2,6 +2,7 @@ package com.github.flatit.di
 
 import android.app.Application
 import com.github.flatit.data.*
+import com.github.flatit.ui.finances.AddExpenseDialogViewModel
 import com.github.flatit.ui.finances.FinancesViewModel
 import com.github.flatit.ui.shoppinglist.ShoppingListViewModel
 import com.github.flatit.ui.todos.TodosViewModel
@@ -26,6 +27,7 @@ val appModule = module {
     viewModel { ShoppingListViewModel(get()) }
     viewModel { TodosViewModel(get()) }
     viewModel { FinancesViewModel(get()) }
+    viewModel { AddExpenseDialogViewModel(get()) }
 }
 
 class FlatIt : Application() {
