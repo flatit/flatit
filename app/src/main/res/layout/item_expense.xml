@@ -2,18 +2,43 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/expense_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
     android:layout_margin="8dp"
-    app:cardCornerRadius="10dp">
+    android:id="@+id/card_expense">
 
-    <TextView
-        android:id="@+id/single_expense_text"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:textAppearance="?textAppearanceBody1"
-        tools:text="expenses" />
+        android:minHeight="48dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/expense_text_view_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintBottom_toTopOf="@id/expense_text_view_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="bairisches Kino" />
+
+        <TextView
+            android:id="@+id/expense_text_view_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?textAppearanceBody2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expense_text_view_text"
+            tools:text="Bavaria ipsum dolor sit amet Griasnoggalsubbm soi mechad naa Zidern gscheckate imma kloan, i Weiznglasl." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

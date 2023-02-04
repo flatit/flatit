@@ -15,4 +15,8 @@
     <string name="delete">Delete</string>
     <string name="mark_as_done">Mark as done</string>
     <string name="mark_as_unresolved">Mark as unresolved</string>
+    <string name="expense">Expense</string>
+    <string name="flatmate">Choose flatmate</string>
+    <string name="save">Save</string>
+    <string name="add_expense">Add expense</string>
 </resources>
