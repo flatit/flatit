@@ -35,14 +35,16 @@ class ShoppingListAdapter(
                 )
             }
             buttonIncrementAmount.setOnClickListener {
-                onIncrement(
-                    ShoppingListItem(
-                        id = item.id,
-                        text = item.text,
-                        checked = item.checked,
-                        amount = item.amount + 1
+                if (item.amount < 99){
+                    onIncrement(
+                        ShoppingListItem(
+                            id = item.id,
+                            text = item.text,
+                            checked = item.checked,
+                            amount = item.amount + 1
+                        )
                     )
-                )
+                }
             }
 
             buttonDecrementAmount.setOnClickListener {
