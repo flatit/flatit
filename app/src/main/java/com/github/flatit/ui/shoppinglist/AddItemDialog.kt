@@ -29,15 +29,18 @@ class AddItemDialog : DialogFragment() {
             .setTitle(R.string.add_item)
             .setView(binding.root)
             .setPositiveButton(R.string.add) { _, _ ->
-                shoppingListRepository.addItem(
-                    ShoppingListItem(
-                        id = UUID.randomUUID().toString(),
-                        text = binding.shoppingListInputTitle.text.toString(),
-                        checked = false,
-                        amount = 1)
-                )
+                if (binding.shoppingListInputTitle.text.toString().length <= 25) {
+                    shoppingListRepository.addItem(
+                        ShoppingListItem(
+                            id = UUID.randomUUID().toString(),
+                            text = binding.shoppingListInputTitle.text.toString(),
+                            checked = false,
+                            amount = 1
+                        )
+                    )
 
-                dismiss()
+                    dismiss()
+                }
             }
             .setNegativeButton(getString(R.string.cancel)) { _, _ ->
                 dismiss()
