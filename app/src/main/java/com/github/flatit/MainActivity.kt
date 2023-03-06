@@ -1,7 +1,7 @@
 package com.github.flatit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.github.flatit.databinding.ActivityMainBinding
 import com.github.flatit.ui.finances.FinancesFragment
@@ -13,11 +13,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     private val selectedFragment = "selectedFragment"
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loadFragment(savedInstanceState?.getInt(selectedFragment))
@@ -27,6 +28,13 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+    }
+
+    private fun selectFragment(id: Int?) {
+        if (id != null)
+            binding.bottomNavigation.selectedItemId = id
+
+        loadFragment(id)
     }
 
     private fun loadFragment(id: Int?) {
@@ -44,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     private fun getFragment(id: Int?) : Fragment {
         return when(id) {
             R.id.page_overview -> {
-                OverviewFragment()
+                OverviewFragment(::selectFragment)
             }
             R.id.page_shopping_list -> {
                 ShoppingListFragment()
@@ -55,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             R.id.page_todos -> {
                 TodosFragment()
             }
-            else -> OverviewFragment()
+            else -> OverviewFragment(::selectFragment)
         }
     }
 
