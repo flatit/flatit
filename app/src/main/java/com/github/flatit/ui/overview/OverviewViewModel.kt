@@ -11,7 +11,7 @@ class OverviewViewModel(
     todosRepository: TodosRepository
 ) : ViewModel() {
 
-    val shoppingListItems = shoppingListRepository.getLastNItems(3)
+    val shoppingListItems = shoppingListRepository.getLastNItems(6)
     val debtItems = financesRepository.getDebts()
-    val todosItems = todosRepository.getLastNItems(3)
+    val todosItems = todosRepository.getLastNItems(6)
 }

@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".ui.finances.FinancesFragment"
-                tools:listitem="@layout/item_debt" />
+                tools:listitem="@layout/item_debt"
+                tools:itemCount="3" />
 
         </com.google.android.material.card.MaterialCardView>
 
