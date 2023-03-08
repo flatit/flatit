@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.flatit.data.model.ShoppingListItem
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -32,7 +34,8 @@ class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
                     id = item.id,
                     text = item.getString("text").orEmpty(),
                     checked = item.getBoolean("checked") ?: false,
-                    amount = item.getLong("amount") ?: 1
+                    amount = item.getLong("amount") ?: 1,
+                    createdAt = item.getTimestamp("createdAt") ?: Timestamp.now()
                 )
             }.orEmpty()
         }
@@ -43,16 +46,18 @@ class ShoppingListFirebaseDataSource : ShoppingListRemoteDataSource {
     override fun getLastNItems(n: Long): LiveData<List<ShoppingListItem>> {
         val items = MutableLiveData<List<ShoppingListItem>>()
 
-        db.collection(COLLECTION_NAME).orderBy("text").limit(n).addSnapshotListener { snapshot, _ ->
-            items.value = snapshot?.mapNotNull { item ->
-                ShoppingListItem(
-                    id = item.id,
-                    text = item.getString("text").orEmpty(),
-                    checked = item.getBoolean("checked") ?: false,
-                    amount = item.getLong("amount") ?: 1
-                )
-            }.orEmpty()
-        }
+        db.collection(COLLECTION_NAME).orderBy("createdAt", Query.Direction.DESCENDING).limit(n)
+            .addSnapshotListener { snapshot, _ ->
+                items.value = snapshot?.mapNotNull { item ->
+                    ShoppingListItem(
+                        id = item.id,
+                        text = item.getString("text").orEmpty(),
+                        checked = item.getBoolean("checked") ?: false,
+                        amount = item.getLong("amount") ?: 1,
+                        createdAt = item.getTimestamp("createdAt") ?: Timestamp.now()
+                    )
+                }.orEmpty()
+            }
 
         return items
     }

@@ -14,6 +14,7 @@ import com.github.flatit.data.ShoppingListRepository
 import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.databinding.DialogShoppingListAddBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.Timestamp
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -29,13 +30,15 @@ class AddItemDialog : DialogFragment() {
             .setTitle(R.string.add_item)
             .setView(binding.root)
             .setPositiveButton(R.string.add) { _, _ ->
+
                 if (binding.shoppingListInputTitle.text.toString().length <= 25) {
                     shoppingListRepository.addItem(
                         ShoppingListItem(
                             id = UUID.randomUUID().toString(),
                             text = binding.shoppingListInputTitle.text.toString(),
                             checked = false,
-                            amount = 1
+                            amount = 1,
+                            createdAt = Timestamp.now()
                         )
                     )
 

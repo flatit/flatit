@@ -32,7 +32,8 @@ class TodosListAdapter(
                         id = item.id,
                         title = item.title,
                         description = item.description,
-                        checked = !item.checked
+                        checked = !item.checked,
+                        createdAt = item.createdAt
                     )
                 )
             }
@@ -53,7 +54,8 @@ class TodosListAdapter(
                                 id = item.id,
                                 title = item.title,
                                 description = item.description,
-                                checked = !item.checked
+                                checked = !item.checked,
+                                createdAt = item.createdAt
                             )
                         )
                     }.show()

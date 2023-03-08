@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.flatit.data.model.TodosListItem
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -31,7 +33,8 @@ class TodosFirebaseDataSource : TodosRemoteDataSource {
                     id = item.id,
                     title = item.getString("title").orEmpty(),
                     description = item.getString("description").orEmpty(),
-                    checked = item.getBoolean("checked") ?: false
+                    checked = item.getBoolean("checked") ?: false,
+                    createdAt = item.getTimestamp("createdAt") ?: Timestamp.now()
                 )
             }.orEmpty()
         }
@@ -42,14 +45,15 @@ class TodosFirebaseDataSource : TodosRemoteDataSource {
     override fun getLastNItems(n: Long): LiveData<List<TodosListItem>> {
         val items = MutableLiveData<List<TodosListItem>>()
 
-        db.collection(COLLECTION_NAME).orderBy("title").limit(n)
+        db.collection(COLLECTION_NAME).orderBy("createdAt", Query.Direction.DESCENDING).limit(n)
             .addSnapshotListener { snapshot, _ ->
                 items.value = snapshot?.mapNotNull { item ->
                     TodosListItem(
                         id = item.id,
                         title = item.getString("title").orEmpty(),
                         description = item.getString("description").orEmpty(),
-                        checked = item.getBoolean("checked") ?: false
+                        checked = item.getBoolean("checked") ?: false,
+                        createdAt = item.getTimestamp("createdAt") ?: Timestamp.now()
                     )
                 }.orEmpty()
             }

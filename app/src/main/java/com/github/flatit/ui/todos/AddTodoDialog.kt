@@ -14,6 +14,7 @@ import com.github.flatit.data.TodosRepository
 import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.DialogTodosAddBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.Timestamp
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -35,7 +36,8 @@ class AddTodoDialog : DialogFragment() {
                         id = UUID.randomUUID().toString(),
                         title = binding.todosInputTitle.text.toString(),
                         description = binding.todosInputDescription.text.toString(),
-                        checked = false
+                        checked = false,
+                        createdAt = Timestamp.now()
                     )
                 )
 

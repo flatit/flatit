@@ -65,6 +65,8 @@ class FinancesFirebaseDataSource : FinancesRemoteDataSource {
     }
 
     override fun getDebts(): LiveData<List<FinancesDebtItem>> {
+        getExpenseItems() // load expenses so that debts are recalculated
+
         return debtsList
     }
 
