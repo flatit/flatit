@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import com.github.flatit.data.model.TodosListItem
 
 interface TodosRepository {
-    fun getItems() : LiveData<List<TodosListItem>>
+    fun getItems(): LiveData<List<TodosListItem>>
+    fun getLastNItems(n: Long): LiveData<List<TodosListItem>>
     fun addItem(item: TodosListItem)
     fun updateItem(item: TodosListItem)
     fun deleteItem(item: TodosListItem)
@@ -15,6 +16,10 @@ class TodosRepositoryImpl(
 ) : TodosRepository {
     override fun getItems(): LiveData<List<TodosListItem>> {
         return dataSource.getItems()
+    }
+
+    override fun getLastNItems(n: Long): LiveData<List<TodosListItem>> {
+        return dataSource.getLastNItems(n)
     }
 
     override fun addItem(item: TodosListItem) {

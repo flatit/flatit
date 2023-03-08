@@ -45,21 +45,6 @@ class FinancesFirebaseDataSource : FinancesRemoteDataSource {
         return expenseItems
     }
 
-    /*override fun getDebtItems(): LiveData<List<FinancesDebtItem>> {
-        val items = MutableLiveData<List<FinancesDebtItem>>()
-
-        db.collection(COLLECTION_NAME).document("debts").collection("Moritz").addSnapshotListener { snapshot, _ ->
-            items.value = snapshot?.mapNotNull { item ->
-                FinancesDebtItem(
-                    id = item.id,
-                    flatMate = item.getString("flatmate").orEmpty(),
-                    debt = item.getDouble("debt") ?: 0.0)
-            }.orEmpty()
-        }
-
-        return items
-    }*/
-
     override fun addExpenseItem(item: FinancesExpenseItem) {
         db.collection(COLLECTION_NAME).document(item.id)
             .set(item)
