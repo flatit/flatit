@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.flatit.R
 import com.github.flatit.data.model.FinancesDebtItem
 import com.github.flatit.databinding.ItemOverviewDebtBinding
+import kotlin.math.abs
 
 class OverviewFinancesAdapter :
     ListAdapter<FinancesDebtItem, OverviewFinancesAdapter.OverviewFinancesViewHolder>(Diff) {
@@ -41,7 +42,7 @@ class OverviewFinancesAdapter :
                 itemOverviewFinancesDebt.text = itemOverviewFinancesDebt.context.getString(
                     R.string.finances_gets,
                     item.flatMate,
-                    item.debt
+                    abs(item.debt)
                 )
             }
         }

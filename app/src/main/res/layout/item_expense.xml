@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toTopOf="@id/expense_text_view_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="bairisches Kino" />
+            tools:text="Bairisches Kino" />
 
         <TextView
             android:id="@+id/expense_text_view_description"
