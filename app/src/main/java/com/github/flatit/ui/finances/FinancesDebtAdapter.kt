@@ -2,13 +2,11 @@ package com.github.flatit.ui.finances
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.flatit.R
 import com.github.flatit.data.model.FinancesDebtItem
-import com.github.flatit.data.model.FinancesExpenseItem
-import com.github.flatit.data.model.Flatmate
 import com.github.flatit.databinding.ItemDebtBinding
 
 class FinancesDebtAdapter : ListAdapter<FinancesDebtItem, FinancesDebtAdapter.FinancesViewHolder>(Diff) {
@@ -24,9 +22,19 @@ class FinancesDebtAdapter : ListAdapter<FinancesDebtItem, FinancesDebtAdapter.Fi
         val item = getItem(position)
 
         with(holder.binding) {
-            var debt: String = ""
-            if (item.debt >= 0) debt = " owes " else debt = " gets "
-            singleDebtText.text = "${item.flatMate} ${debt} ${item.debt}€"
+            if (item.debt >= 0) {
+                singleDebtText.text = singleDebtText.context.getString(
+                    R.string.finances_owes,
+                    item.flatMate,
+                    item.debt
+                )
+            } else {
+                singleDebtText.text = singleDebtText.context.getString(
+                    R.string.finances_gets,
+                    item.flatMate,
+                    item.debt
+                )
+            }
         }
     }
 
