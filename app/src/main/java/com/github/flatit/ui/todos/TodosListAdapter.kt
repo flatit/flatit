@@ -74,6 +74,4 @@ class TodosListAdapter(
             return oldItem == newItem
         }
     }
-
-
 }

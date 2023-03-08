@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
@@ -28,6 +29,13 @@
                 android:text="Newest items on shoppinglist:"
                 android:textAppearance="?textAppearanceBody2" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/overview_shopping_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_overview_shopping_list" />
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -48,6 +56,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/finances"
                 android:textAppearance="?textAppearanceBody1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/overview_debts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_overview_debt" />
 
         </LinearLayout>
 
@@ -75,6 +90,13 @@
                 android:layout_height="wrap_content"
                 android:text="Newest items on todos list:"
                 android:textAppearance="?textAppearanceBody2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/overview_todos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_overview_todo" />
 
         </LinearLayout>
 

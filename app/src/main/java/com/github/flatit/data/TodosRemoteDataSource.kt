@@ -8,7 +8,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 interface TodosRemoteDataSource {
-    fun getItems() : LiveData<List<TodosListItem>>
+    fun getItems(): LiveData<List<TodosListItem>>
+    fun getLastNItems(n: Long): LiveData<List<TodosListItem>>
     fun addItem(item: TodosListItem)
     fun updateItem(item: TodosListItem)
     fun deleteItem(item: TodosListItem)
@@ -30,9 +31,28 @@ class TodosFirebaseDataSource : TodosRemoteDataSource {
                     id = item.id,
                     title = item.getString("title").orEmpty(),
                     description = item.getString("description").orEmpty(),
-                    checked = item.getBoolean("checked") ?: false)
+                    checked = item.getBoolean("checked") ?: false
+                )
             }.orEmpty()
         }
+
+        return items
+    }
+
+    override fun getLastNItems(n: Long): LiveData<List<TodosListItem>> {
+        val items = MutableLiveData<List<TodosListItem>>()
+
+        db.collection(COLLECTION_NAME).orderBy("title").limit(n)
+            .addSnapshotListener { snapshot, _ ->
+                items.value = snapshot?.mapNotNull { item ->
+                    TodosListItem(
+                        id = item.id,
+                        title = item.getString("title").orEmpty(),
+                        description = item.getString("description").orEmpty(),
+                        checked = item.getBoolean("checked") ?: false
+                    )
+                }.orEmpty()
+            }
 
         return items
     }

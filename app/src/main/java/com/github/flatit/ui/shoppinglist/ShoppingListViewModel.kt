@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.github.flatit.data.ShoppingListRepository
 
 class ShoppingListViewModel(
-    private val shoppingListRepository : ShoppingListRepository
+    shoppingListRepository: ShoppingListRepository
 ) : ViewModel() {
 
     val items = shoppingListRepository.getItems()
