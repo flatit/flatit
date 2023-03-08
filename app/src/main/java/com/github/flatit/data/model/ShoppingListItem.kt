@@ -1,8 +1,11 @@
 package com.github.flatit.data.model
 
-data class ShoppingListItem (
+import com.google.firebase.Timestamp
+
+data class ShoppingListItem(
     val id: String,
     val text: String,
     val checked: Boolean,
-    val amount: Long
+    val amount: Long,
+    val createdAt: Timestamp
 )

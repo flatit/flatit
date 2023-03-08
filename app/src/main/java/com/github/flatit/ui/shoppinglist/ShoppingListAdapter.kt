@@ -30,7 +30,8 @@ class ShoppingListAdapter(
                         id = item.id,
                         text = item.text,
                         checked = isChecked,
-                        amount = item.amount
+                        amount = item.amount,
+                        createdAt = item.createdAt
                     )
                 )
             }
@@ -41,7 +42,8 @@ class ShoppingListAdapter(
                             id = item.id,
                             text = item.text,
                             checked = item.checked,
-                            amount = item.amount + 1
+                            amount = item.amount + 1,
+                            createdAt = item.createdAt
                         )
                     )
                 }
@@ -54,7 +56,8 @@ class ShoppingListAdapter(
                             id = item.id,
                             text = item.text,
                             checked = item.checked,
-                            amount = item.amount - 1
+                            amount = item.amount - 1,
+                            createdAt = item.createdAt
                         )
                     )
                 }
