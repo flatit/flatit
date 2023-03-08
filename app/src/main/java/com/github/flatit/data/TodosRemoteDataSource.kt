@@ -4,11 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.flatit.data.model.TodosListItem
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 interface TodosRemoteDataSource {
-    fun getItems() : LiveData<List<TodosListItem>>
+    fun getItems(): LiveData<List<TodosListItem>>
+    fun getLastNItems(n: Long): LiveData<List<TodosListItem>>
     fun addItem(item: TodosListItem)
     fun updateItem(item: TodosListItem)
     fun deleteItem(item: TodosListItem)
@@ -30,9 +33,30 @@ class TodosFirebaseDataSource : TodosRemoteDataSource {
                     id = item.id,
                     title = item.getString("title").orEmpty(),
                     description = item.getString("description").orEmpty(),
-                    checked = item.getBoolean("checked") ?: false)
+                    checked = item.getBoolean("checked") ?: false,
+                    createdAt = item.getTimestamp("createdAt") ?: Timestamp.now()
+                )
             }.orEmpty()
         }
+
+        return items
+    }
+
+    override fun getLastNItems(n: Long): LiveData<List<TodosListItem>> {
+        val items = MutableLiveData<List<TodosListItem>>()
+
+        db.collection(COLLECTION_NAME).orderBy("createdAt", Query.Direction.DESCENDING).limit(n)
+            .addSnapshotListener { snapshot, _ ->
+                items.value = snapshot?.mapNotNull { item ->
+                    TodosListItem(
+                        id = item.id,
+                        title = item.getString("title").orEmpty(),
+                        description = item.getString("description").orEmpty(),
+                        checked = item.getBoolean("checked") ?: false,
+                        createdAt = item.getTimestamp("createdAt") ?: Timestamp.now()
+                    )
+                }.orEmpty()
+            }
 
         return items
     }
