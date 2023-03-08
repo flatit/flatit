@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.flatit.R
 import com.github.flatit.data.model.FinancesDebtItem
 import com.github.flatit.databinding.ItemOverviewDebtBinding
 
@@ -30,9 +31,19 @@ class OverviewFinancesAdapter :
         val item = getItem(position)
 
         with(holder.binding) {
-            var debt: String = ""
-            if (item.debt >= 0) debt = " owes " else debt = " gets "
-            itemOverviewFinancesDebt.text = "${item.flatMate} ${debt} ${item.debt}€"
+            if (item.debt >= 0) {
+                itemOverviewFinancesDebt.text = itemOverviewFinancesDebt.context.getString(
+                    R.string.finances_owes,
+                    item.flatMate,
+                    item.debt
+                )
+            } else {
+                itemOverviewFinancesDebt.text = itemOverviewFinancesDebt.context.getString(
+                    R.string.finances_gets,
+                    item.flatMate,
+                    item.debt
+                )
+            }
         }
     }
 

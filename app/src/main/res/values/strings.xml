@@ -19,4 +19,6 @@
     <string name="flatmate">Choose flatmate</string>
     <string name="save">Save</string>
     <string name="add_expense">Add expense</string>
+    <string name="finances_owes">%1$s owes %2$.2f€</string>
+    <string name="finances_gets">%1$s gets %2$.2f€</string>
 </resources>

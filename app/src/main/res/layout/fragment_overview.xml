@@ -15,19 +15,15 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shopping"
                 android:textAppearance="?textAppearanceBody1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Newest items on shoppinglist:"
-                android:textAppearance="?textAppearanceBody2" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_shopping_list"
@@ -49,7 +45,9 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,19 +75,15 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/todos"
                 android:textAppearance="?textAppearanceBody1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Newest items on todos list:"
-                android:textAppearance="?textAppearanceBody2" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_todos"
