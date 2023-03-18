@@ -21,20 +21,18 @@
         tools:text="Käseschnitzel" />
 
 
-    <ImageButton
+    <Button
         android:id="@+id/button_increment_amount"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_margin="5dp"
         android:layout_marginStart="5dp"
         android:contentDescription="@string/increment_amount"
-        android:src="@drawable/ic_plus"
+        app:icon="@drawable/ic_plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textAppearance="?textAppearanceBody1"
+        style="?attr/materialIconButtonStyle"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--app:layout_constraintStart_toEndOf="@+id/textview_amount"-->
 
     <TextView
         android:id="@+id/textview_amount"
@@ -48,16 +46,16 @@
         android:gravity="center"
         tools:text="10" />
 
-    <ImageButton
+    <Button
         android:id="@+id/button_decrement_amount"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_marginEnd="45dp"
         android:contentDescription="@string/decrement_amount"
-        android:src="@drawable/ic_minus"
+        app:icon="@drawable/ic_minus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_increment_amount"
         app:layout_constraintTop_toTopOf="parent"
-        android:textAppearance="?textAppearanceBody1"/>
+        style="?attr/materialIconButtonStyle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
