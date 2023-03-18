@@ -52,7 +52,8 @@
                 android:layout_height="wrap_content"
 
                 android:importantForAutofill="no"
-                android:inputType="textMultiLine">
+                android:inputType="numberDecimal"
+                android:digits="0123456789.,">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +94,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/expensesDropDownPerson"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="none"/>
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
