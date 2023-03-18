@@ -24,8 +24,13 @@ class OverviewFragment(
         val binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         binding.overviewCardShopping.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+        binding.overviewCardShoppingChevron.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+
         binding.overviewCardFinances.setOnClickListener { selectFragment(R.id.page_finances) }
+        binding.overviewCardFinancesChevron.setOnClickListener { selectFragment(R.id.page_finances) }
+
         binding.overviewCardTodos.setOnClickListener { selectFragment(R.id.page_todos) }
+        binding.overviewCardTodosChevron.setOnClickListener { selectFragment(R.id.page_todos) }
 
         val shoppingListAdapter = OverviewShoppingListAdapter()
         binding.overviewShoppingList.layoutManager = LinearLayoutManager(context)

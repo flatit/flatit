@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -20,19 +21,35 @@
             android:paddingVertical="8dp">
 
             <TextView
+                android:id="@+id/overview_card_shopping_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/shopping"
-                android:textAppearance="?textAppearanceBody1" />
+                android:textAppearance="?textAppearanceHeadlineSmall" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_shopping_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_shopping_title"
+                app:layout_constraintEnd_toStartOf="@id/overview_card_shopping_chevron"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_overview_shopping_list" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/overview_card_shopping_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="?attr/materialIconButtonStyle"
+                app:icon="@drawable/ic_chevron_right" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -42,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -50,19 +67,35 @@
             android:paddingVertical="8dp">
 
             <TextView
+                android:id="@+id/overview_card_finances_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/finances"
-                android:textAppearance="?textAppearanceBody1" />
+                android:textAppearance="?textAppearanceHeadlineSmall" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_debts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_finances_title"
+                app:layout_constraintEnd_toStartOf="@id/overview_card_finances_chevron"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_overview_debt" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/overview_card_finances_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="?attr/materialIconButtonStyle"
+                app:icon="@drawable/ic_chevron_right" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -72,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -80,19 +113,35 @@
             android:paddingVertical="8dp">
 
             <TextView
+                android:id="@+id/overview_card_todos_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/todos"
-                android:textAppearance="?textAppearanceBody1" />
+                android:textAppearance="?textAppearanceHeadlineSmall" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_todos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_todos_title"
+                app:layout_constraintEnd_toStartOf="@id/overview_card_todos_chevron"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_overview_todo" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/overview_card_todos_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="?attr/materialIconButtonStyle"
+                app:icon="@drawable/ic_chevron_right" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
