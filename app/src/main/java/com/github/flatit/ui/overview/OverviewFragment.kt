@@ -23,16 +23,11 @@ class OverviewFragment(
     ): View {
         val binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
+        // Shopping list
         binding.overviewCardShopping.setOnClickListener { selectFragment(R.id.page_shopping_list) }
         binding.overviewCardShoppingChevron.setOnClickListener { selectFragment(R.id.page_shopping_list) }
 
-        binding.overviewCardFinances.setOnClickListener { selectFragment(R.id.page_finances) }
-        binding.overviewCardFinancesChevron.setOnClickListener { selectFragment(R.id.page_finances) }
-
-        binding.overviewCardTodos.setOnClickListener { selectFragment(R.id.page_todos) }
-        binding.overviewCardTodosChevron.setOnClickListener { selectFragment(R.id.page_todos) }
-
-        val shoppingListAdapter = OverviewShoppingListAdapter()
+        val shoppingListAdapter = OverviewShoppingListAdapter(selectFragment)
         binding.overviewShoppingList.layoutManager = LinearLayoutManager(context)
         binding.overviewShoppingList.adapter = shoppingListAdapter
 
@@ -40,7 +35,11 @@ class OverviewFragment(
             shoppingListAdapter.submitList(it)
         }
 
-        val financesAdapter = OverviewFinancesAdapter()
+        // Finances
+        binding.overviewCardFinances.setOnClickListener { selectFragment(R.id.page_finances) }
+        binding.overviewCardFinancesChevron.setOnClickListener { selectFragment(R.id.page_finances) }
+
+        val financesAdapter = OverviewFinancesAdapter(selectFragment)
         binding.overviewDebts.layoutManager = LinearLayoutManager(context)
         binding.overviewDebts.adapter = financesAdapter
 
@@ -48,7 +47,11 @@ class OverviewFragment(
             financesAdapter.submitList(it)
         }
 
-        val todosAdapter = OverviewTodosAdapter()
+        // Todos
+        binding.overviewCardTodos.setOnClickListener { selectFragment(R.id.page_todos) }
+        binding.overviewCardTodosChevron.setOnClickListener { selectFragment(R.id.page_todos) }
+
+        val todosAdapter = OverviewTodosAdapter(selectFragment)
         binding.overviewTodos.layoutManager = LinearLayoutManager(context)
         binding.overviewTodos.adapter = todosAdapter
 
