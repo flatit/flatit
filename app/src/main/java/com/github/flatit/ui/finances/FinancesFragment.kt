@@ -46,7 +46,7 @@ class FinancesFragment : Fragment() {
         }
 
         binding.fabFinances.setOnClickListener {
-            AddExpenseDialog(financesRepository::addExpenseItem, null).show(parentFragmentManager, "DialogSaveExpense")
+            SaveExpenseDialog(financesRepository::addExpenseItem, null).show(parentFragmentManager, "DialogSaveExpense")
         }
 
         return root

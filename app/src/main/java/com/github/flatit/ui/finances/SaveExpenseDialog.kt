@@ -14,7 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.Timestamp
 import java.util.*
 
-class AddExpenseDialog(
+class SaveExpenseDialog(
     private val financeOperationFunc: (item: FinancesExpenseItem) -> Unit,
     private val financeExpenseItem: FinancesExpenseItem?
 ) : DialogFragment() {
@@ -30,7 +30,7 @@ class AddExpenseDialog(
         binding.expensesDropDownPerson.setText(financeExpenseItem?.person)
 
         val dialog = MaterialAlertDialogBuilder(requireActivity())
-            .setTitle(R.string.add_expense)
+            .setTitle(R.string.save_expense)
             .setView(binding.root)
             .setPositiveButton(R.string.save) { _, _ ->
                 financeOperationFunc(

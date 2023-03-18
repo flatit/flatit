@@ -18,5 +18,6 @@
     <string name="expense">Expense</string>
     <string name="flatmate">Choose flatmate</string>
     <string name="save">Save</string>
-    <string name="add_expense">Add expense</string>
+    <string name="edit">Edit</string>
+    <string name="save_expense">Save expense</string>
 </resources>

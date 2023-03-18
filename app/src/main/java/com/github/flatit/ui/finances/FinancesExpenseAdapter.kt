@@ -40,7 +40,7 @@ class FinancesExpenseAdapter (
                     ).setNeutralButton(R.string.delete) { _, _ ->
                         onExpenseDelete(item)
                     }.setPositiveButton(R.string.edit) { _, _ ->
-                        AddExpenseDialog(onExpenseEdit, item).show(parentFragmentManager, "DialogAddExpense")
+                        SaveExpenseDialog(onExpenseEdit, item).show(parentFragmentManager, "DialogEditExpense")
                     }.show()
             }
         }
