@@ -18,6 +18,8 @@
     <string name="expense">Ausgabe</string>
     <string name="flatmate">Mitbewohner auswählen</string>
     <string name="save">Speichern</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="save_expense">Ausgabe speichern</string>
     <string name="add_expense">Ausgabe hinzufügen</string>
     <string name="finances_owes">%1$s schuldet %2$.2f€</string>
     <string name="finances_gets">%1$s bekommt %2$.2f€</string>

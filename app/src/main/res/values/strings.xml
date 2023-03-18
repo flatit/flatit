@@ -22,4 +22,5 @@
     <string name="finances_gets">%1$s gets %2$.2f€</string>
     <string name="edit">Edit</string>
     <string name="save_expense">Save expense</string>
+    <string name="add_expense">Add expense</string>
 </resources>
