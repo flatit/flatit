@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.flatit.R
 import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.ItemOverviewTodoBinding
 
-class OverviewTodosAdapter :
-    ListAdapter<TodosListItem, OverviewTodosAdapter.OverviewTodosViewHolder>(Diff) {
+class OverviewTodosAdapter(
+    private val selectFragment: (id: Int?) -> Unit
+) : ListAdapter<TodosListItem, OverviewTodosAdapter.OverviewTodosViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,6 +30,8 @@ class OverviewTodosAdapter :
 
     override fun onBindViewHolder(holder: OverviewTodosViewHolder, position: Int) {
         val item = getItem(position)
+
+        holder.itemView.setOnClickListener { selectFragment(R.id.page_todos) }
 
         with(holder.binding) {
             itemOverviewTodosTitle.text = item.title

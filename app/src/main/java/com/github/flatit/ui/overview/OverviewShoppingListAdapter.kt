@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.flatit.R
 import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.databinding.ItemOverviewShoppingListBinding
 
-class OverviewShoppingListAdapter :
-    ListAdapter<ShoppingListItem, OverviewShoppingListAdapter.OverviewShoppingListViewHolder>(Diff) {
+class OverviewShoppingListAdapter(
+    private val selectFragment: (id: Int?) -> Unit
+) : ListAdapter<ShoppingListItem, OverviewShoppingListAdapter.OverviewShoppingListViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,8 +31,11 @@ class OverviewShoppingListAdapter :
     override fun onBindViewHolder(holder: OverviewShoppingListViewHolder, position: Int) {
         val item = getItem(position)
 
+        holder.itemView.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+
         with(holder.binding) {
             itemOverviewShoppingListTitle.text = item.text
+
         }
     }
 
