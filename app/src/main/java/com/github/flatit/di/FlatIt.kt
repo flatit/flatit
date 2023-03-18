@@ -7,6 +7,7 @@ import com.github.flatit.ui.finances.FinancesViewModel
 import com.github.flatit.ui.overview.OverviewViewModel
 import com.github.flatit.ui.shoppinglist.ShoppingListViewModel
 import com.github.flatit.ui.todos.TodosViewModel
+import com.google.android.material.color.DynamicColors
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -36,6 +37,8 @@ class FlatIt : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        DynamicColors.applyToActivitiesIfAvailable(this)
 
         startKoin {
             modules(appModule)
