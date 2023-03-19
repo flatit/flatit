@@ -5,24 +5,28 @@
         android:id="@id/overviewFragment"
         android:enabled="true"
         android:icon="@drawable/ic_overview"
+        android:menuCategory="secondary"
         android:title="@string/overview"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@id/shoppingListFragment"
         android:enabled="true"
         android:icon="@drawable/ic_shopping"
+        android:menuCategory="secondary"
         android:title="@string/shopping"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@id/financesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_finances"
+        android:menuCategory="secondary"
         android:title="@string/finances"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@id/todosFragment"
         android:enabled="true"
         android:icon="@drawable/ic_todos"
+        android:menuCategory="secondary"
         android:title="@string/todos"
         app:showAsAction="ifRoom"/>
 </menu>
