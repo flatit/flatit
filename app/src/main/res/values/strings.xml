@@ -23,4 +23,5 @@
     <string name="edit">Edit</string>
     <string name="save_expense">Save expense</string>
     <string name="add_expense">Add expense</string>
+    <string name="overview_shopping_list_item" translatable="false">%1$dx %2$s</string>
 </resources>

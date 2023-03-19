@@ -34,8 +34,7 @@ class OverviewShoppingListAdapter(
         holder.itemView.setOnClickListener { selectFragment(R.id.page_shopping_list) }
 
         with(holder.binding) {
-            itemOverviewShoppingListTitle.text = item.text
-
+            itemOverviewShoppingListTitle.text = itemOverviewShoppingListTitle.context.getString(R.string.overview_shopping_list_item, item.amount, item.text)
         }
     }
 
