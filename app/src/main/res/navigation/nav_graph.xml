@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/overviewFragment">
+
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.github.flatit.ui.overview.OverviewFragment"
+        android:label="@string/overview"
+        tools:layout="@layout/fragment_overview">
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="com.github.flatit.ui.shoppinglist.ShoppingListFragment"
+        android:label="@string/shopping"
+        tools:layout="@layout/fragment_shopping_list" />
+    <fragment
+        android:id="@+id/financesFragment"
+        android:name="com.github.flatit.ui.finances.FinancesFragment"
+        android:label="@string/finances"
+        tools:layout="@layout/fragment_finances" />
+    <fragment
+        android:id="@+id/todosFragment"
+        android:name="com.github.flatit.ui.todos.TodosFragment"
+        android:label="@string/todos"
+        tools:layout="@layout/fragment_todos"/>
+</navigation>

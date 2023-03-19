@@ -10,7 +10,7 @@ import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.databinding.ItemOverviewShoppingListBinding
 
 class OverviewShoppingListAdapter(
-    private val selectFragment: (id: Int?) -> Unit
+    // private val selectFragment: (id: Int?) -> Unit
 ) : ListAdapter<ShoppingListItem, OverviewShoppingListAdapter.OverviewShoppingListViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
@@ -31,7 +31,7 @@ class OverviewShoppingListAdapter(
     override fun onBindViewHolder(holder: OverviewShoppingListViewHolder, position: Int) {
         val item = getItem(position)
 
-        holder.itemView.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+        // holder.itemView.setOnClickListener { selectFragment(R.id.page_shopping_list) }
 
         with(holder.binding) {
             itemOverviewShoppingListTitle.text = itemOverviewShoppingListTitle.context.getString(R.string.overview_shopping_list_item, item.amount, item.text)
