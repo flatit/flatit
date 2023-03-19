@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.flatit"
-        minSdk 29
+        minSdk 25
         targetSdk 33
         versionCode 1
         versionName "0.1.0"
