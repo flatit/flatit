@@ -7,6 +7,7 @@
     app:cardCornerRadius="10dp"
     android:layout_margin="8dp"
     android:id="@+id/card_expense">
+    <!--app:cardBackgroundColor="@color/md_theme_dark_onBackground">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
