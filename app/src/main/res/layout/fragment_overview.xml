@@ -29,12 +29,22 @@
                 android:text="@string/shopping"
                 android:textAppearance="?textAppearanceHeadlineSmall" />
 
+            <TextView
+                android:id="@+id/overview_card_shopping_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_shopping_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/newest_items_on_shoppinglist"
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:paddingBottom="10sp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_shopping_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/overview_card_shopping_title"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_shopping_subtitle"
                 app:layout_constraintEnd_toStartOf="@id/overview_card_shopping_chevron"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_overview_shopping_list" />
@@ -121,12 +131,22 @@
                 android:text="@string/todos"
                 android:textAppearance="?textAppearanceHeadlineSmall" />
 
+            <TextView
+                android:id="@+id/overview_card_todos_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_todos_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/newest_items_on_todos"
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:paddingBottom="10sp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/overview_todos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/overview_card_todos_title"
+                app:layout_constraintTop_toBottomOf="@id/overview_card_todos_subtitle"
                 app:layout_constraintEnd_toStartOf="@id/overview_card_todos_chevron"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_overview_todo" />

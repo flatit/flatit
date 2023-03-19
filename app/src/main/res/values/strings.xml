@@ -24,4 +24,6 @@
     <string name="save_expense">Save expense</string>
     <string name="add_expense">Add expense</string>
     <string name="overview_shopping_list_item" translatable="false">%1$dx %2$s</string>
+    <string name="newest_items_on_shoppinglist">Newest items on shoppinglist:</string>
+    <string name="newest_items_on_todos">Newest items on todos list:</string>
 </resources>
