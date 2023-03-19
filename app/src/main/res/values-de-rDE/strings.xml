@@ -25,4 +25,6 @@
     <string name="finances_gets">%1$s bekommt %2$.2f€</string>
     <string name="newest_items_on_shoppinglist">Neuste Items auf der Einkaufsliste:</string>
     <string name="newest_items_on_todos">Neueste Todos:</string>
+    <string name="expenses"><b>Ausgaben</b></string>
+    <string name="debts"><b>Schulden</b></string>
 </resources>
