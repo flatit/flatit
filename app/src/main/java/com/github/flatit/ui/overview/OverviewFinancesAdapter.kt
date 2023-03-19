@@ -11,7 +11,7 @@ import com.github.flatit.databinding.ItemOverviewDebtBinding
 import kotlin.math.abs
 
 class OverviewFinancesAdapter(
-    private val selectFragment: (id: Int?) -> Unit
+    // private val selectFragment: (id: Int?) -> Unit
 ) : ListAdapter<FinancesDebtItem, OverviewFinancesAdapter.OverviewFinancesViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
@@ -32,7 +32,7 @@ class OverviewFinancesAdapter(
     override fun onBindViewHolder(holder: OverviewFinancesViewHolder, position: Int) {
         val item = getItem(position)
 
-        holder.itemView.setOnClickListener { selectFragment(R.id.page_finances) }
+        // holder.itemView.setOnClickListener { selectFragment(R.id.page_finances) }
 
         with(holder.binding) {
             if (item.debt >= 0) {

@@ -11,7 +11,7 @@ import com.github.flatit.databinding.FragmentOverviewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OverviewFragment(
-    private val selectFragment: (id: Int?) -> Unit
+    // private val selectFragment: (id: Int?) -> Unit
 ) : Fragment() {
 
     private val overviewViewModel by viewModel<OverviewViewModel>()
@@ -24,10 +24,10 @@ class OverviewFragment(
         val binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         // Shopping list
-        binding.overviewCardShopping.setOnClickListener { selectFragment(R.id.page_shopping_list) }
-        binding.overviewCardShoppingChevron.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+        // binding.overviewCardShopping.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+        // binding.overviewCardShoppingChevron.setOnClickListener { selectFragment(R.id.page_shopping_list) }
 
-        val shoppingListAdapter = OverviewShoppingListAdapter(selectFragment)
+        val shoppingListAdapter = OverviewShoppingListAdapter()
         binding.overviewShoppingList.layoutManager = LinearLayoutManager(context)
         binding.overviewShoppingList.adapter = shoppingListAdapter
 
@@ -36,10 +36,10 @@ class OverviewFragment(
         }
 
         // Finances
-        binding.overviewCardFinances.setOnClickListener { selectFragment(R.id.page_finances) }
-        binding.overviewCardFinancesChevron.setOnClickListener { selectFragment(R.id.page_finances) }
+        // binding.overviewCardFinances.setOnClickListener { selectFragment(R.id.page_finances) }
+        // binding.overviewCardFinancesChevron.setOnClickListener { selectFragment(R.id.page_finances) }
 
-        val financesAdapter = OverviewFinancesAdapter(selectFragment)
+        val financesAdapter = OverviewFinancesAdapter()
         binding.overviewDebts.layoutManager = LinearLayoutManager(context)
         binding.overviewDebts.adapter = financesAdapter
 
@@ -48,10 +48,10 @@ class OverviewFragment(
         }
 
         // Todos
-        binding.overviewCardTodos.setOnClickListener { selectFragment(R.id.page_todos) }
-        binding.overviewCardTodosChevron.setOnClickListener { selectFragment(R.id.page_todos) }
+        // binding.overviewCardTodos.setOnClickListener { selectFragment(R.id.page_todos) }
+        // binding.overviewCardTodosChevron.setOnClickListener { selectFragment(R.id.page_todos) }
 
-        val todosAdapter = OverviewTodosAdapter(selectFragment)
+        val todosAdapter = OverviewTodosAdapter()
         binding.overviewTodos.layoutManager = LinearLayoutManager(context)
         binding.overviewTodos.adapter = todosAdapter
 

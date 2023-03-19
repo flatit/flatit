@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/page_overview"
+        android:id="@id/overviewFragment"
         android:enabled="true"
         android:icon="@drawable/ic_overview"
         android:title="@string/overview"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/page_shopping_list"
+        android:id="@id/shoppingListFragment"
         android:enabled="true"
         android:icon="@drawable/ic_shopping"
         android:title="@string/shopping"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/page_finances"
+        android:id="@id/financesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_finances"
         android:title="@string/finances"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/page_todos"
+        android:id="@id/todosFragment"
         android:enabled="true"
         android:icon="@drawable/ic_todos"
         android:title="@string/todos"
