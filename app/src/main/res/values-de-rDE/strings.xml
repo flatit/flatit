@@ -23,4 +23,6 @@
     <string name="add_expense">Ausgabe hinzufügen</string>
     <string name="finances_owes">%1$s schuldet %2$.2f€</string>
     <string name="finances_gets">%1$s bekommt %2$.2f€</string>
+    <string name="newest_items_on_shoppinglist">Neuste Items auf der Einkaufsliste:</string>
+    <string name="newest_items_on_todos">Neueste Todos:</string>
 </resources>

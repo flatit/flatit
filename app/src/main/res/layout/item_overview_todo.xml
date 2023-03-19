@@ -9,7 +9,7 @@
         android:id="@+id/item_overview_todos_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.Material3.BodyLarge"
+        style="@style/TextAppearance.Material3.BodyMedium"
         tools:text="Wasserhahn reparieren" />
 
 </LinearLayout>
