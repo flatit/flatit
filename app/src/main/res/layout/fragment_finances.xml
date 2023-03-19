@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textSize="20dp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:text="@string/debts" />
 
         <com.google.android.material.card.MaterialCardView
@@ -25,8 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:cardCornerRadius="20dp">
-            <!--app:cardBackgroundColor="@color/md_theme_dark_onBackground">-->
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="?attr/colorSecondaryContainer"
+            >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/debts"
@@ -47,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textSize="20dp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:text="@string/expenses" />
 
         <androidx.recyclerview.widget.RecyclerView
