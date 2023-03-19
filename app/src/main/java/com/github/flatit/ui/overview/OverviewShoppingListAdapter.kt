@@ -2,6 +2,7 @@ package com.github.flatit.ui.overview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ import com.github.flatit.data.model.ShoppingListItem
 import com.github.flatit.databinding.ItemOverviewShoppingListBinding
 
 class OverviewShoppingListAdapter(
-    // private val selectFragment: (id: Int?) -> Unit
+    private val navController: NavController
 ) : ListAdapter<ShoppingListItem, OverviewShoppingListAdapter.OverviewShoppingListViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
@@ -31,7 +32,7 @@ class OverviewShoppingListAdapter(
     override fun onBindViewHolder(holder: OverviewShoppingListViewHolder, position: Int) {
         val item = getItem(position)
 
-        // holder.itemView.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+        holder.itemView.setOnClickListener { navController.navigate(R.id.shoppingListFragment) }
 
         with(holder.binding) {
             itemOverviewShoppingListTitle.text = itemOverviewShoppingListTitle.context.getString(R.string.overview_shopping_list_item, item.amount, item.text)

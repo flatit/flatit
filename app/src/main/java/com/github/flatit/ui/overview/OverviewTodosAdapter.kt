@@ -2,6 +2,7 @@ package com.github.flatit.ui.overview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ import com.github.flatit.data.model.TodosListItem
 import com.github.flatit.databinding.ItemOverviewTodoBinding
 
 class OverviewTodosAdapter(
-    // private val selectFragment: (id: Int?) -> Unit
+    private val navController: NavController
 ) : ListAdapter<TodosListItem, OverviewTodosAdapter.OverviewTodosViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
@@ -31,7 +32,7 @@ class OverviewTodosAdapter(
     override fun onBindViewHolder(holder: OverviewTodosViewHolder, position: Int) {
         val item = getItem(position)
 
-        // holder.itemView.setOnClickListener { selectFragment(R.id.page_todos) }
+        holder.itemView.setOnClickListener { navController.navigate(R.id.todosFragment) }
 
         with(holder.binding) {
             itemOverviewTodosTitle.text = item.title
