@@ -1,7 +1,9 @@
 package com.github.flatit.ui.finances
 
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.bold
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -27,7 +29,7 @@ class FinancesExpenseAdapter (
         val item = getItem(position)
 
         with(holder.binding) {
-            expenseTextViewText.text = item.title
+            expenseTextViewText.text = SpannableStringBuilder().bold { append(item.title)}
             expenseTextViewDescription.text = item.description
 
             cardExpense.setOnClickListener {
