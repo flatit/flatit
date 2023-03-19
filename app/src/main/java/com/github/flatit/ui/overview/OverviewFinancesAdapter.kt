@@ -2,6 +2,7 @@ package com.github.flatit.ui.overview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,7 @@ import com.github.flatit.databinding.ItemOverviewDebtBinding
 import kotlin.math.abs
 
 class OverviewFinancesAdapter(
-    // private val selectFragment: (id: Int?) -> Unit
+    private val navController: NavController
 ) : ListAdapter<FinancesDebtItem, OverviewFinancesAdapter.OverviewFinancesViewHolder>(Diff) {
 
     override fun onCreateViewHolder(
@@ -32,7 +33,7 @@ class OverviewFinancesAdapter(
     override fun onBindViewHolder(holder: OverviewFinancesViewHolder, position: Int) {
         val item = getItem(position)
 
-        // holder.itemView.setOnClickListener { selectFragment(R.id.page_finances) }
+        holder.itemView.setOnClickListener { navController.navigate(R.id.financesFragment) }
 
         with(holder.binding) {
             if (item.debt >= 0) {

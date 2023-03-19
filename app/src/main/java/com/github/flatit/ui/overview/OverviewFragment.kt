@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.flatit.R
 import com.github.flatit.databinding.FragmentOverviewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OverviewFragment(
-    // private val selectFragment: (id: Int?) -> Unit
-) : Fragment() {
+class OverviewFragment : Fragment() {
 
     private val overviewViewModel by viewModel<OverviewViewModel>()
 
@@ -22,12 +21,13 @@ class OverviewFragment(
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentOverviewBinding.inflate(inflater, container, false)
+        val navController = findNavController()
 
         // Shopping list
-        // binding.overviewCardShopping.setOnClickListener { selectFragment(R.id.page_shopping_list) }
-        // binding.overviewCardShoppingChevron.setOnClickListener { selectFragment(R.id.page_shopping_list) }
+        binding.overviewCardShopping.setOnClickListener { navController.navigate(R.id.shoppingListFragment) }
+        binding.overviewCardShoppingChevron.setOnClickListener { navController.navigate(R.id.shoppingListFragment) }
 
-        val shoppingListAdapter = OverviewShoppingListAdapter()
+        val shoppingListAdapter = OverviewShoppingListAdapter(navController)
         binding.overviewShoppingList.layoutManager = LinearLayoutManager(context)
         binding.overviewShoppingList.adapter = shoppingListAdapter
 
@@ -36,10 +36,10 @@ class OverviewFragment(
         }
 
         // Finances
-        // binding.overviewCardFinances.setOnClickListener { selectFragment(R.id.page_finances) }
-        // binding.overviewCardFinancesChevron.setOnClickListener { selectFragment(R.id.page_finances) }
+        binding.overviewCardFinances.setOnClickListener { navController.navigate(R.id.financesFragment) }
+        binding.overviewCardFinancesChevron.setOnClickListener { navController.navigate(R.id.financesFragment) }
 
-        val financesAdapter = OverviewFinancesAdapter()
+        val financesAdapter = OverviewFinancesAdapter(navController)
         binding.overviewDebts.layoutManager = LinearLayoutManager(context)
         binding.overviewDebts.adapter = financesAdapter
 
@@ -48,10 +48,10 @@ class OverviewFragment(
         }
 
         // Todos
-        // binding.overviewCardTodos.setOnClickListener { selectFragment(R.id.page_todos) }
-        // binding.overviewCardTodosChevron.setOnClickListener { selectFragment(R.id.page_todos) }
+        binding.overviewCardTodos.setOnClickListener { navController.navigate(R.id.todosFragment) }
+        binding.overviewCardTodosChevron.setOnClickListener { navController.navigate(R.id.todosFragment) }
 
-        val todosAdapter = OverviewTodosAdapter()
+        val todosAdapter = OverviewTodosAdapter(navController)
         binding.overviewTodos.layoutManager = LinearLayoutManager(context)
         binding.overviewTodos.adapter = todosAdapter
 

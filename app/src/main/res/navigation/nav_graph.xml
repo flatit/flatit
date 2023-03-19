@@ -9,21 +9,24 @@
         android:id="@+id/overviewFragment"
         android:name="com.github.flatit.ui.overview.OverviewFragment"
         android:label="@string/overview"
-        tools:layout="@layout/fragment_overview">
-    </fragment>
+        tools:layout="@layout/fragment_overview" />
+
     <fragment
         android:id="@+id/shoppingListFragment"
         android:name="com.github.flatit.ui.shoppinglist.ShoppingListFragment"
         android:label="@string/shopping"
         tools:layout="@layout/fragment_shopping_list" />
+
     <fragment
         android:id="@+id/financesFragment"
         android:name="com.github.flatit.ui.finances.FinancesFragment"
         android:label="@string/finances"
         tools:layout="@layout/fragment_finances" />
+
     <fragment
         android:id="@+id/todosFragment"
         android:name="com.github.flatit.ui.todos.TodosFragment"
         android:label="@string/todos"
         tools:layout="@layout/fragment_todos"/>
+
 </navigation>
